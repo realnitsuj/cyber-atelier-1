@@ -7,7 +7,7 @@ title: |
 subtitle: |
   8INF968 - Atelier pratique en cybersécurité I
 
-  Fehmi Jaafar
+  Fehmi Jaafar\hspace{2em}Samuel Desbiens
 author:
 - Justin Bossard
 - Mattéo Gouhier
@@ -15,6 +15,7 @@ author:
 - Samuel Plet
 date: "3 octobre 2025"
 toc: true
+lof: true
 numbersections: true
 fontsize: 12pt
 papersize: a4
@@ -81,9 +82,51 @@ Notre investigation se basera donc sur l'image en question.
 
 # *Examination*
 
+[^werner]: Il s'agit du nom d'un caractère fictif de Marvel, lié à [HYDRA][]. Voir <https://en.wikipedia.org/wiki/Werner_von_Strucker>
+
+Pour examiner l'image, nous allons utiliser principalement le logiciel [Autopsy][]. Celui-ci permet d'analyser et d'extraire toutes les informations potentiellement utiles d'une image disque : métadonnées, conversations, journal d'appels, mails, contacts...
+
+Nous allons commencer par montrer le plus visible, en allant vers les données plus compliquées à extraire, ce qui inclus les messages encodés, mentionnés précédemment comme étant pertinents.
+
+<!--## Mise en place de l'environnement de travail-->
+
+<!--Comment configurer le projet dans Autopsy ?-->
+
+<!--### Installation d'Autopsy-->
+
+
 ## Identité
 
+Commençons par présenter le propriétaire du téléphone : il se nomme Werner von Strucker[^werner].
+
+![Informations civiles - `Dump/data/system_ce/0/snapshots/141_reduced.jpg`](figures/141_reduced.jpg){height=400px}
+
+
+## Photographies
+
+Dans les photos, un certain nombre semble intéressant.
+
+Tout d'abord, un selfie de Werner.
+
+![Selfie - `Dump/data/media/0/DCIM/Camera/IMG_20210411_144226.jpg`](./figures/IMG_20210411_144226.jpg){height=200px}
+
+Par ailleurs, une photo d'une *piadina*, scène triviale d'alimentation, illustre qu'il emploie son téléphone à titre personnel. D'autres photos vont dans ce sens.
+
+![*Piadina* - `Dump/data/media/0/DCIM/Camera/20210420_125202.jpg`](figures/20210420_125202.jpg){height=200px}
+
 ## Localisation
+
+16 photos ont une localisation associée. On voit donc que l'utilisateur en a pris uniquement en Suisse, principalement aux abords de Lausanne.
+
+![Carte des photos géolocalisées](localisation.png)
+
+## Contacts
+
+[^bddGM]: `Dump/data/data/com.google.android.gm/databases/`  
+`peopleCache_vonstruckerwerner@gmail.com_com.google_11.db`
+
+Une base de données GMail[^bddGM] donne un aperçu de ses contacts. Notons l'adresse `therealredskull41@gmail.com`. En effet, [Red Skull](https://en.wikipedia.org/wiki/Red_Skull) est un personnage fictif du même univers que Werner von Strucker.
+
 
 ## Messages
 

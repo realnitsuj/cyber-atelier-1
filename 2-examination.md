@@ -39,6 +39,16 @@ Commençons par présenter le propriétaire du téléphone : il se nomme Werner 
 
 ![Informations civiles - `/system_ce/0/snapshots/141_reduced.jpg`](figures/Export/141_reduced.jpg){height=400px}
 
+### Profil Instagram
+
+L'analyse des fichiers d'application a révélé la présence d'Instagram sur l'appareil. L'examen du fichier de préférences `/LogicalFileSet1/Dump/data/data/com.instagram.android/shared_prefs/com.instagram.android_preferences.xml` a permis d'identifier le profil utilisateur :
+
+```xml
+username\&quot;:\&quot;wernervonstrucker\&quot;,\&quot;full_name\&quot;:\&quot;Werner Von Strucker
+```
+
+Cette découverte confirme l'identité du propriétaire et révèle l'utilisation du nom d'utilisateur `wernervonstrucker` sur la plateforme Instagram.
+
 
 ## Photographies
 
@@ -67,11 +77,26 @@ L'adresse en question a deux transactions associées, impliquant 5 autres adress
 - [d14c-d8f2](https://www.blockchain.com/fr/explorer/transactions/bch/d14c75d148e7b4edbed737fbf6bef2e182aad47f30cd60f48c2a9176b73ad8f2)
 - [bddf-e925](https://www.blockchain.com/explorer/transactions/bch/bddf7ed0ebfbb893208878f874266959c1780d49496bc061b41d6a93f361e925)
 
+### Corrélation avec Instagram
+
+La recherche du nom d'utilisateur `wernervonstrucker` sur Instagram a permis de découvrir un profil public contenant plusieurs photographies. Deux de ces images correspondent exactement aux photos trouvées sur l'appareil mobile :
+
+1. **Le selfie** : Identique à `IMG_20210411_144226.jpg` trouvé dans la galerie du téléphone
+2. **La photo de piadina** : Correspondant à `20210420_125202.jpg` également trouvée sur l'appareil
+
+Cette corrélation confirme de manière irréfutable l'appartenance du profil Instagram au propriétaire de l'appareil et établit un lien direct entre l'activité en ligne et les données présentes sur le dispositif mobile.
+
 ## Localisation
 
 16 photos ont une localisation associée. On voit donc que l'utilisateur en a pris uniquement en Suisse, principalement aux abords de Lausanne.
 
 ![Carte des photos géolocalisées](figures/localisation.png){height=300px}
+
+### Localisation complémentaire via Instagram
+
+L'analyse du profil Instagram `wernervonstrucker` a fourni des informations géographiques supplémentaires. La photo de piadina publiée sur Instagram contient une géolocalisation précise : **Piadineria Mamma Mia**, un restaurant italien situé à Lausanne.
+
+Cette information corrobore les données de géolocalisation extraites du téléphone et confirme la présence du suspect dans la région lausannoise, renforçant ainsi la cohérence géographique de ses déplacements.
 
 ## Contacts
 

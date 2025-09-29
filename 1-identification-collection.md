@@ -10,7 +10,6 @@ L'exploitation de ces premiers résultats a conduit à l'identification d'un sus
 
 Notre investigation se basera donc sur l'image en question.
 
-
 ***
 
 - <https://cfreds.nist.gov/all/FrancescoServida%2FDFRWS/SamsungGalaxyS10Android10DFRWS2021>

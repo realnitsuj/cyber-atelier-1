@@ -58,12 +58,16 @@ Une base de données GMail[^bddGM] donne un aperçu de ses contacts. Notons l'ad
 
 L'examen des données extraites du téléphones du suspect a permis de révéler la présence de messages illisibles reçus et envoyés, suggérant l'utilisation de méthodes d'encryption des messages.
 
-Par exemple : `2 2 +41786909109  1617901761280 0  1 -1 2   HHY6cKEMFlNU3NPs/bxhxPK QRyDXUrQK7a8tHtX5xBXdYQ=  0 0 1 it.feio.android.omninotes 1 0 0 228015930119996 0    0 0  0 0 0  0  0 0 0 0 0 0 0  0
+Par exemple : `2 2 +41786909109  1617901761280 0  1 -1 2   HHY6cKEMFlNU3NPs/bxhxPKQ RyDXUrQK7a8tHtX5xBXdYQ=  0 0 1 it.feio.android.omninotes 1 0 0 228015930119996 0    0 0  0 0 0  0  0 0 0 0 0 0 0  0
 `
 
 L'analyse des métadonnées associées à ces messages met en évidence la provenance de ces messages, [OmniNotes][], une application open-source de prise de notes. Voir des messages cryptés depuis une application de prise de notes a priori non dédiée à l'envoi de message est un indicateur fort de tentative de dissimulation.
 
 La prochaine étape est d'analyser le code source de cette application présent sur l'appareil pour identifier les méthodes utilisées.
+
+### Examen du code source d'[OmniNotes][]
+
+Pour extraire le code de l'application présente sur l'appareil, nous avons utilisé [apk2java-linux](https://github.com/TheZ3ro/apk2java-linux).
 
 L'examen des fonctions a confirmé son rôle dans l'envoi de messages, notamment via l'appel d'une fonction dédiée à l'envoi.	
 
@@ -121,7 +125,7 @@ private String get_data() throws IOException, JSONException {
 }
 ```
 
-Avec des bouts de code codés en `base64` et compressé en [zlib][], identifiable grâce au préfixe `eJw` :
+Avec des bouts de code codés en `base64` et compressé en [zlib](https://www.zlib.net/), identifiable grâce au préfixe `eJw` :
 
 - `eJwNyUsKwDAIBNATZSTbHietkH5wShUkt7frNyNe30Tm6hgPB3Z+ijztYDpM45eW3rrcunA5rQ DMDhIV` nous donne le lien vers un site nous permettant de récupérer une clé : `rb5CuefkDLyb9T`
 - `eJwNwIEAAAAMhECiULJ4idm3u4eyBRWSA6E` nous donne `yyyy-MM-dd`.
@@ -160,7 +164,7 @@ public String put(String string2) {
 
 <!--IL MANQUE UN IF ICI-->
 
-Pour résumer on va coder les messages de la manière suivante :
+Pour résumer, on va coder les messages de la manière suivante :
 
 $$\text{HHY}+\text{base64}(\text{AES avec clé hybride}(\text{Message Clair}))$$
 

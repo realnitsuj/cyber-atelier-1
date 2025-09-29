@@ -23,9 +23,9 @@ geometry: margin=2cm
 lang: fr-FR
 linkcolor: blue
 header-includes:
-- \addto\captionsfrench{\renewcommand{\chaptername}{Partie}}
-- \usepackage{fvextra}
+- \usepackage{fvextra,emoji}
 - \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
+- \addto\captionsfrench{\renewcommand{\chaptername}{Partie}}
 ---
 
 <!--Liens-->
@@ -81,8 +81,6 @@ Notre investigation se basera donc sur l'image en question.
 - <https://cfreds.nist.gov/all/FrancescoServida%2FDFRWS/SamsungGalaxyS10Android10DFRWS2021>
 - SHA2-256 : `54877505f1b4eb26c4cb6b43fd6338424660c207e678b773044a4a79d6e374b7`
 
-
-
 # *Examination*
 
 [^werner]: Il s'agit du nom d'un caractère fictif de Marvel, lié à [HYDRA][]. Voir <https://en.wikipedia.org/wiki/Werner_von_Strucker>
@@ -125,8 +123,7 @@ Par ailleurs, une photo d'une *piadina*, scène triviale d'alimentation, illustr
 
 ## Contacts
 
-[^bddGM]: `Dump/data/data/com.google.android.gm/databases/`  
-`peopleCache_vonstruckerwerner@gmail.com_com.google_11.db`
+[^bddGM]: `Dump/data/data/com.google.android.gm/databases/peopleCache_vonstruckerwerner@gmail.com _com.google_11.db`
 
 Une base de données GMail[^bddGM] donne un aperçu de ses contacts. Notons l'adresse `therealredskull41@gmail.com`. En effet, [Red Skull](https://en.wikipedia.org/wiki/Red_Skull) est un personnage fictif du même univers que Werner von Strucker.
 
@@ -253,8 +250,8 @@ Voici une partie de ces messages considérés comme les plus importants pour not
 
 ### Messages isolés
 
-<!--6cKEMFlNU3NPs/bxhxPKQRyDXUrQK7a8tHtX5xBXdYQ= → Heil Hydra 🐙!-->
-
+Heil Hydra \emoji{octopus}!
+:   `6cKEMFlNU3NPs/bxhxPKQRyDXUrQK7a8tHtX5xBXdYQ=`
 
 ### Conversation donnant des informations utiles
 

@@ -21,8 +21,17 @@ On remplit les informations optionnelles de manière adéquate, puis on finit la
 
 ### Ajout des données
 
-Après création du projet, 
+Après création du projet, on peut ajouter les données. Dans l'ordre :
 
+1. `Generate new host name based on data source name`
+2. `Logical files`
+3. `Local files and folders`, puis on ajoute le `zip` directement.
+4. On laisse tout coché, sauf `iOS analyzer` (et `Android Analyzer (aLEAPP)` si on n'a pas Windows)
+5. On termine, et on attend patiemment la fin de l'analyse
+
+### Exploitation des données
+
+**TODO**
 
 ## Identité
 
@@ -42,6 +51,21 @@ Tout d'abord, un selfie de Werner.
 Par ailleurs, une photo d'une *piadina*, scène triviale d'alimentation, illustre qu'il emploie son téléphone à titre personnel. D'autres photos vont dans ce sens.
 
 ![*Piadina* - `/media/0/DCIM/Camera/20210420_125202.jpg`](figures/Export/20210420_125202.jpg){height=200px}
+
+### Transactions Bitcoin
+
+Une capture d'écran avec une adresse Bitcoin est présente.
+
+![Adresse Bitcoin - `/clipboard/1740051371957_356_87/Screenshot_20210418-161954_BRD.jpg_thum.jpg`](figures/Export/Screenshot_20210418-161954_BRD.jpg_thum.jpg){height=300px}
+
+En regardant sur la blockchain, on retrouve l'historique de transactions de cette adresse : <https://www.blockchain.com/explorer/addresses/bch/qpuv475w4wytd6agujpzfl9muzajf9le45nkefd23y>.
+
+On identifie les adresses BTC avec leurs 4 premiers et leurs 4 derniers caractères. On note une transaction de la même manière.
+
+L'adresse en question a deux transactions associées, impliquant 5 autres adresse BTC :
+
+- [d14c-d8f2](https://www.blockchain.com/fr/explorer/transactions/bch/d14c75d148e7b4edbed737fbf6bef2e182aad47f30cd60f48c2a9176b73ad8f2)
+- [bddf-e925](https://www.blockchain.com/explorer/transactions/bch/bddf7ed0ebfbb893208878f874266959c1780d49496bc061b41d6a93f361e925)
 
 ## Localisation
 
@@ -199,16 +223,4 @@ Good. Meet us at our base. Below the Turkish consulate. Delete this message once
 
 ## Skimming
 
-### Transactions Bitcoin
 
-Une capture d'écran avec une adresse Bitcoin est présente.
-
-![Adresse Bitcoin - `/clipboard/1740051371957_356_87/Screenshot_20210418-161954_BRD.jpg_thum.jpg`](figures/Export/Screenshot_20210418-161954_BRD.jpg_thum.jpg){height=300px}
-
-En regardant sur la blockchain, on retrouve l'historique de transactions de cette adresse : <https://www.blockchain.com/explorer/addresses/bch/qpuv475w4wytd6agujpzfl9muzajf9le45nkefd23y>.
-
-On va identifier les adresses avec leurs 4 premiers caractères. On note une transaction 
-
-L'adresse en question a deux transactions associées, impliquant 5 autres adresse BC :
-
-- 

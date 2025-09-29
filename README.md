@@ -1,1 +1,1 @@
-`pandoc rapport.md -o rapport.pdf`
+`pandoc  --pdf-engine=lualatex rapport.md -o rapport.pdf`

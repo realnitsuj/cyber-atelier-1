@@ -2,6 +2,8 @@
 
 [^werner]: Il s'agit du nom d'un caractère fictif de Marvel, lié à [HYDRA][]. Voir <https://en.wikipedia.org/wiki/Werner_von_Strucker>
 
+> *La racine des figures correspond à `Dump/data/`*
+
 Pour examiner l'image, nous allons utiliser principalement le logiciel [Autopsy][]. Celui-ci permet d'analyser et d'extraire toutes les informations potentiellement utiles d'une image disque : métadonnées, conversations, journal d'appels, mails, contacts...
 
 Nous allons commencer par montrer le plus visible, en allant vers les données plus compliquées à extraire, ce qui inclus les messages encodés, mentionnés précédemment comme étant pertinents.
@@ -26,7 +28,7 @@ Après création du projet,
 
 Commençons par présenter le propriétaire du téléphone : il se nomme Werner von Strucker[^werner].
 
-![Informations civiles - `Dump/data/system_ce/0/snapshots/141_reduced.jpg`](figures/Export/141_reduced.jpg){height=400px}
+![Informations civiles - `/system_ce/0/snapshots/141_reduced.jpg`](figures/Export/141_reduced.jpg){height=400px}
 
 
 ## Photographies
@@ -35,11 +37,11 @@ Dans les photos, un certain nombre semble intéressant.
 
 Tout d'abord, un selfie de Werner.
 
-![Selfie - `Dump/data/media/0/DCIM/Camera/IMG_20210411_144226.jpg`](figures/Export/IMG_20210411_144226.jpg){height=200px}
+![Selfie - `/media/0/DCIM/Camera/IMG_20210411_144226.jpg`](figures/Export/IMG_20210411_144226.jpg){height=200px}
 
 Par ailleurs, une photo d'une *piadina*, scène triviale d'alimentation, illustre qu'il emploie son téléphone à titre personnel. D'autres photos vont dans ce sens.
 
-![*Piadina* - `Dump/data/media/0/DCIM/Camera/20210420_125202.jpg`](figures/Export/20210420_125202.jpg){height=200px}
+![*Piadina* - `/media/0/DCIM/Camera/20210420_125202.jpg`](figures/Export/20210420_125202.jpg){height=200px}
 
 ## Localisation
 
@@ -49,7 +51,7 @@ Par ailleurs, une photo d'une *piadina*, scène triviale d'alimentation, illustr
 
 ## Contacts
 
-[^bddGM]: `Dump/data/data/com.google.android.gm/databases/peopleCache_vonstruckerwerner@gmail.com _com.google_11.db`
+[^bddGM]: `/data/com.google.android.gm/databases/peopleCache_vonstruckerwerner@gmail.com _com.google_11.db`
 
 Une base de données GMail[^bddGM] donne un aperçu de ses contacts. Notons l'adresse `therealredskull41@gmail.com`. En effet, [Red Skull](https://en.wikipedia.org/wiki/Red_Skull) est un personnage fictif du même univers que Werner von Strucker.
 
@@ -76,15 +78,15 @@ public void putComm(View object) {
 	object = (EditText)this.findViewById(2131296976);
         object = new TextHelper(this.getResources()).put(object.getText().toString());
         if (object.length() > 160) {
-            Toast.makeText((Context)this, (CharSequence)ZipHelper.decomp("eJwFQLENwDAIe8UH5I1u6ZL2gQgs1AUPqEuu R1eanI6bVTuIV8JUxsCi/0Y832ED99UM+Q=="), (int)0).show();
+            Toast.makeText((Context)this, (CharSequence)ZipHelper.decomp("eJwFQLENwDAIe8UH5I1u6ZL2gQgs1AUPqEuuR1eanI 6bVTuIV8JUxsCi/0Y832ED99UM+Q=="), (int)0).show();
             return;
         }
         if (object.equals((Object)"")) {
-            Toast.makeText((Context)this, (CharSequence)ZipHelper.decomp("eJwFgLEJACAMBFfJMpaCK6R4QhqV+/ mLsOARB/2kb8WWnaUBZ9oIuA=="), (int)0).show();
+            Toast.makeText((Context)this, (CharSequence)ZipHelper.decomp("eJwFgLEJACAMBFfJMpaCK6R4QhqV+/mLsOARB/2kb8 WWnaUBZ9oIuA=="), (int)0).show();
             return;
         }
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(ZipHelper.decomp("eJwFQLEJADAMesU7+kOmXlCoSBY X7x/k0n8tDJMnHhQ48AYI"));
+        stringBuilder.append(ZipHelper.decomp("eJwFQLEJADAMesU7+kOmXlCoSBYX7x /k0n8tDJMnHhQ48AYI"));
         stringBuilder.append((String)object);
         stringBuilder.append(" to ");
         stringBuilder.append(this.rsn());
@@ -130,8 +132,7 @@ Avec des bouts de code codés en `base64` et compressé en [zlib](https://www.zl
 - `eJwNyUsKwDAIBNATZSTbHietkH5wShUkt7frNyNe30Tm6hgPB3Z+ijztYDpM45eW3rrcunA5rQ DMDhIV` nous donne le lien vers un site nous permettant de récupérer une clé : `rb5CuefkDLyb9T`
 - `eJwNwIEAAAAMhECiULJ4idm3u4eyBRWSA6E` nous donne `yyyy-MM-dd`.
 
-En analysant ce bout de code on comprend que l'on va récupérer la clé sur le site Web, on récupère aussi la date actuelle que l'on va mettre sous format `yyyy-MM-dd` et que l'on va concaténer à la clé. Ce qui va nous donner une nouvelle clé permettant de coder les messages à partir d'une clé statique et d'une clé dépendant de paramètres temporels.
-
+En analysant ce bout de code on comprend que l'on va récupérer la clé sur le site Web, on récupère aussi la date actuelle que l'on va mettre sous format `yyyy-MM-dd` et que l'on va concaténer à la clé. Ce qui va nous donner une nouvelle clé permettant de coder les messages à partir d'une clé statique et d'une clé dépendant de paramètres temporels.  
 Par exemple, un message envoyé le 15 Avril 2021 sera codé via la clé `rb5CuefkDLyb9T2021-04-15`.
 
  
@@ -176,16 +177,15 @@ Pour décoder on va donc :
 
 Cela nous a permis de pouvoir pouvoir lire les 42 messages qui ont été jusqu'alors illisibles.
 
-Voici une partie de ces messages considérés comme les plus importants pour notre travail.
+### Messages décodés
 
-### Messages isolés
+Voici une partie de ces messages considérés comme les plus importants pour notre travail.
 
 Heil Hydra \emoji{octopus}!
 :   `6cKEMFlNU3NPs/bxhxPKQRyDXUrQK7a8tHtX5xBXdYQ=`
 
-### Conversation donnant des informations utiles
 
-Du 15 avril 2021 :
+Conversation du 15 avril 2021 :
 
 We need to meet you. Get to geneva asap, further instructions will follow.
 :   `HHYbm0jyH9MsbIM1DsyvNU9iDm63RQa9/1Fxfrs/A75m3wAM04VwDGphJ4m9IUTjPQ//3qbJmQk xQQeu50WmK0zLHj93BiByuFEHsvHwzcfHsI`
@@ -201,3 +201,14 @@ Good. Meet us at our base. Below the Turkish consulate. Delete this message once
 
 ### Transactions Bitcoin
 
+Une capture d'écran avec une adresse Bitcoin est présente.
+
+![Adresse Bitcoin - `/clipboard/1740051371957_356_87/Screenshot_20210418-161954_BRD.jpg_thum.jpg`](figures/Export/Screenshot_20210418-161954_BRD.jpg_thum.jpg){height=300px}
+
+En regardant sur la blockchain, on retrouve l'historique de transactions de cette adresse : <https://www.blockchain.com/explorer/addresses/bch/qpuv475w4wytd6agujpzfl9muzajf9le45nkefd23y>.
+
+On va identifier les adresses avec leurs 4 premiers caractères. On note une transaction 
+
+L'adresse en question a deux transactions associées, impliquant 5 autres adresse BC :
+
+- 

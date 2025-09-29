@@ -1,0 +1,27 @@
+documentclass: report
+title: |
+  ![](figures/logo-uqac.eps){height=1in}
+
+  Atelier 1 : Mobile Forensics
+subtitle: |
+  8INF968 - Atelier pratique en cybersécurité I
+
+  Fehmi Jaafar\hspace{2em}Samuel Desbiens
+author:
+- Justin Bossard
+- Mattéo Gouhier
+- Paul Mathé
+- Samuel Plet
+date: "3 octobre 2025"
+toc: true
+lof: true
+numbersections: true
+fontsize: 12pt
+papersize: a4
+geometry: margin=2cm
+lang: fr-FR
+linkcolor: blue
+header-includes:
+- \usepackage{fvextra,emoji}
+- \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
+- \addto\captionsfrench{\renewcommand{\chaptername}{Partie}}

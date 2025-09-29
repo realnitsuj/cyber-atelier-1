@@ -41,7 +41,7 @@ Commençons par présenter le propriétaire du téléphone : il se nomme Werner 
 
 ### Profil Instagram
 
-L'analyse des fichiers d'application a révélé la présence d'Instagram sur l'appareil. L'examen du fichier de préférences `/LogicalFileSet1/Dump/data/data/com.instagram.android/shared_prefs/com.instagram.android_preferences.xml` a permis d'identifier le profil utilisateur :
+L'analyse des fichiers d'application a révélé la présence d'Instagram sur l'appareil. L'examen du fichier de préférences `/data/data/com.instagram.android/shared_prefs/com.instagram.android_preferences.xml` a permis d'identifier le profil utilisateur :
 
 ```xml
 username\&quot;:\&quot;wernervonstrucker\&quot;,\&quot;full_name\&quot;:\&quot;Werner Von Strucker

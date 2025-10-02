@@ -176,7 +176,7 @@ On a donc trouvé de nombreuses adresses BCH, dont les transactions s'entremêle
 
 - la chaîne de provenance (quelle adresse/quel portefeuille a fourni les fonds)
 - la chaîne de destination (où les fonds vont ensuite)
-- l’identité/attribution (lien entre adresse et personne ou service)
+- l'identité/attribution (lien entre adresse et personne ou service)
 - la chronologie (quand les transferts ont eu lieu, y compris ordre et corrélation temporelle)
 - le montant réel (par fragmentation ou autre)
 
@@ -323,4 +323,19 @@ Good. Meet us at our base. Below the Turkish consulate. Delete this message once
 
 ## Skimming
 
+**Phrase d'introduction pour garder un lien avec les parties.**
+
+
+L'enregistrement intitulé `2021_04_09T1621` présente des éléments suspects. Après une première écoute, il apparaît presque vide, ne contenant que deux bruits sourds. Or, la personne mise en cause dans cette affaire fait l'objet de soupçons de fraude à la carte bancaire et les autorités ont retrouvés un dispositif suspect sur un atm à Genève.
+
+Après quelques recherches, il apparaît que l'appareil retrouvé sur le distributeur automatique de billets (ATM) pourrait correspondre à un **skimming device**, c'est-à-dire un dispositif destiné à copier frauduleusement les informations contenues sur la bande magnétique d'une carte bancaire lorsque celle-ci est insérée dans un lecteur.
+
+**[Schéma de fonctionnement]**
+
+Des exemples de skimming devices disponibles en ligne montrent que certains comportent également une piste audio et sont appelés « audioskim ». Il est donc plausible que l'enregistrement provienne de cet appareil. De plus, le titre de l'enregistrement, incluant une date, suggère qu'il correspond à une capture audio réalisée à un instant précis et conforte la thèse de l'enregistrement de données de carte bancaire.
+
+![Appareil de skimming](figures/skimming/appareil-skimming.png){height=200px}
+
+
+### Fonctionnement d'un *skimming device*
 

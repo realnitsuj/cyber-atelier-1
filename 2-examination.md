@@ -1,8 +1,6 @@
 # *Examination*
 
-[^werner]: Il s'agit du nom d'un caractère fictif de Marvel, lié à [HYDRA][]. Voir <https://en.wikipedia.org/wiki/Werner_von_Strucker>
-
-> *La racine des figures correspond à `Dump/data/`*
+> *La racine des chemins correspond à `Dump/data/`*
 
 Pour examiner l'image, nous allons utiliser principalement le logiciel [Autopsy][]. Celui-ci permet d'analyser et d'extraire toutes les informations potentiellement utiles d'une image disque : métadonnées, conversations, journal d'appels, mails, contacts...
 
@@ -31,79 +29,151 @@ Après création du projet, on peut ajouter les données. Dans l'ordre :
 
 ### Exploitation des données
 
-**TODO**
+On a, à la fin de l'analyse, toutes les données retrouvées organisées dans différentes catégories.
+
+![Organisation des données dans [Autopsy][]](figures/autopsy.png)
+
+Cela va nous permettre d'examiner facilement toutes les données d'intérêt, chose que nous allons maintenant présenter.
 
 ## Identité
 
-Commençons par présenter le propriétaire du téléphone : il se nomme Werner von Strucker[^werner].
+Commençons par présenter le propriétaire du téléphone : il se nomme Werner von Strucker. Il s'agit du nom d'un caractère fictif de Marvel, lié à [HYDRA][]. Voir <https://en.wikipedia.org/wiki/Werner_von_Strucker>.
 
-![Informations civiles - `/system_ce/0/snapshots/141_reduced.jpg`](figures/Export/141_reduced.jpg){height=400px}
+![Informations civiles - `/system_ce/0/snapshots/141_reduced.jpg`](figures/Export/141_reduced.jpg){height=290px}
 
 ### Profil Instagram
 
-L'analyse des fichiers d'application a révélé la présence d'Instagram sur l'appareil. L'examen du fichier de préférences `/data/data/com.instagram.android/shared_prefs/com.instagram.android_preferences.xml` a permis d'identifier le profil utilisateur :
+L'analyse des fichiers d'application a révélé la présence d'Instagram sur l'appareil. L'examen du fichier de préférences `/data/data/com.instagram.android/shared_prefs/com.instagram. android_preferences.xml` a permis d'identifier le profil utilisateur :
 
 ```xml
-username\&quot;:\&quot;wernervonstrucker\&quot;,\&quot;full_name\&quot;:\&quot;Werner Von Strucker
+username\&quot;:\&quot;wernervonstrucker\&quot;,\&quot;full_name\&quot;:\&quot; Werner Von Strucker
 ```
 
 Cette découverte confirme l'identité du propriétaire et révèle l'utilisation du nom d'utilisateur `wernervonstrucker` sur la plateforme Instagram.
+
+![Profil Instagram](figures/instagram-profil.png){height=200px}
+
+### Contacts
+
+[^bddGM]: `/data/com.google.android.gm/databases/peopleCache_vonstruckerwerner@gmail.com _com.google_11.db`
+
+Une base de données GMail[^bddGM] donne un aperçu de ses contacts par mail. Notons les adresses :
+
+- `vonstruckerwerner@gmail.com` : vraisemblablement son adresse personnelle.
+- `therealredskull41@gmail.com` : [Red Skull](https://en.wikipedia.org/wiki/Red_Skull) est un personnage fictif du même univers que Werner von Strucker.
+- `arthur.kart@yopmail.com` : un contact personnel. Nous n'avons rien trouvé de plus à son sujet, mais c'est la seule autre adresse qui n'est pas une marque.
 
 
 ## Photographies
 
 Dans les photos, un certain nombre semble intéressant.
 
-Tout d'abord, un selfie de Werner.
-
-![Selfie - `/media/0/DCIM/Camera/IMG_20210411_144226.jpg`](figures/Export/IMG_20210411_144226.jpg){height=200px}
-
-Par ailleurs, une photo d'une *piadina*, scène triviale d'alimentation, illustre qu'il emploie son téléphone à titre personnel. D'autres photos vont dans ce sens.
-
-![*Piadina* - `/media/0/DCIM/Camera/20210420_125202.jpg`](figures/Export/20210420_125202.jpg){height=200px}
-
-### Transactions Bitcoin
-
-Une capture d'écran avec une adresse Bitcoin est présente.
-
-![Adresse Bitcoin - `/clipboard/1740051371957_356_87/Screenshot_20210418-161954_BRD.jpg_thum.jpg`](figures/Export/Screenshot_20210418-161954_BRD.jpg_thum.jpg){height=300px}
-
-En regardant sur la blockchain, on retrouve l'historique de transactions de cette adresse : <https://www.blockchain.com/explorer/addresses/bch/qpuv475w4wytd6agujpzfl9muzajf9le45nkefd23y>.
-
-On identifie les adresses BTC avec leurs 4 premiers et leurs 4 derniers caractères. On note une transaction de la même manière.
-
-L'adresse en question a deux transactions associées, impliquant 5 autres adresse BTC :
-
-- [d14c-d8f2](https://www.blockchain.com/fr/explorer/transactions/bch/d14c75d148e7b4edbed737fbf6bef2e182aad47f30cd60f48c2a9176b73ad8f2)
-- [bddf-e925](https://www.blockchain.com/explorer/transactions/bch/bddf7ed0ebfbb893208878f874266959c1780d49496bc061b41d6a93f361e925)
-
 ### Corrélation avec Instagram
 
-La recherche du nom d'utilisateur `wernervonstrucker` sur Instagram a permis de découvrir un profil public contenant plusieurs photographies. Deux de ces images correspondent exactement aux photos trouvées sur l'appareil mobile :
+Deux des images postées sur Instagram correspondent exactement aux photos trouvées sur l'appareil mobile :
 
-1. **Le selfie** : Identique à `IMG_20210411_144226.jpg` trouvé dans la galerie du téléphone
-2. **La photo de piadina** : Correspondant à `20210420_125202.jpg` également trouvée sur l'appareil
+1. **Le selfie** : Identique à `/media/0/DCIM/Camera/IMG_20210411_144226.jpg` trouvé dans la galerie du téléphone
+
+   <!--![Selfie - `/media/0/DCIM/Camera/IMG_20210411_144226.jpg`](figures/Export/IMG_20210411_144226.jpg){height=200px}-->
+
+2. **La photo de piadina** : Correspondant à `/media/0/DCIM/20210420_125202.jpg`, également trouvée sur l'appareil
+   
+   ![Photo de *piadina* sur Instagram](figures/instagram-piadina.png){height=250px}
+
+   On remarque également un lieu posté avec ce met : **Piadineria Mamma Mia**, un restaurant italien situé à Lausanne.
 
 Cette corrélation confirme de manière irréfutable l'appartenance du profil Instagram au propriétaire de l'appareil et établit un lien direct entre l'activité en ligne et les données présentes sur le dispositif mobile.
 
-## Localisation
+### Localisation
 
-16 photos ont une localisation associée. On voit donc que l'utilisateur en a pris uniquement en Suisse, principalement aux abords de Lausanne.
+16 photos ont une localisation associée. On voit donc sur la carte que l'utilisateur en a pris uniquement en Suisse, principalement aux abords de Lausanne.
 
 ![Carte des photos géolocalisées](figures/localisation.png){height=300px}
 
-### Localisation complémentaire via Instagram
+Cette observation est corroborée par le restaurant mentionné sur Instagram et confirme la présence du suspect dans la région lausannoise, renforçant ainsi la cohérence géographique de ses déplacements.
 
-L'analyse du profil Instagram `wernervonstrucker` a fourni des informations géographiques supplémentaires. La photo de piadina publiée sur Instagram contient une géolocalisation précise : **Piadineria Mamma Mia**, un restaurant italien situé à Lausanne.
+Parmi les photos intéressantes, on remarque une photo du logo d'[HYDRA][], datant du 8 avril 2021, avec un lien. Celui-ci est inaccessible, et nous n'avons pas pu trouvé d'informations à son sujet. Elle a été prise à l'Université de Lausanne, selon sa localisation.
 
-Cette information corrobore les données de géolocalisation extraites du téléphone et confirme la présence du suspect dans la région lausannoise, renforçant ainsi la cohérence géographique de ses déplacements.
+![Logo d'[HYDRA][] - `/media/0/DCIM/Camera/20210408_182133.jpg`](figures/Export/20210408_182133.jpg){height=200px}
 
-## Contacts
+[^univ]: Puisqu'il serait né le 01/01/1980 d'après ses informations Google
 
-[^bddGM]: `/data/com.google.android.gm/databases/peopleCache_vonstruckerwerner@gmail.com _com.google_11.db`
+Il y a deux autres photos à l'Université, cela montre qu'il est potentiellement professeur ou chercheur, et peut-être étudiant[^univ].
 
-Une base de données GMail[^bddGM] donne un aperçu de ses contacts. Notons l'adresse `therealredskull41@gmail.com`. En effet, [Red Skull](https://en.wikipedia.org/wiki/Red_Skull) est un personnage fictif du même univers que Werner von Strucker.
+***
 
+On trouve par ailleurs le fichier `/data/com.google.android.apps.maps/cache/image_manager_ disk_cache/08c1ccbdafb163c39925d5bbd6bab77c9f4c6012590ec3552e109f6026e591b3.0`, qui est une image cache de Google Maps de la commune de Bussigny, attenante à Lausanne, plus précisément de sa gare.
+
+![Gare de Bussigny sur Google Maps](figures/Export/08c1ccbdafb163c39925d5bbd6bab77c9f4c6012590ec3552e109f6026e591b3.0){height=200px}
+
+[^hotel-prilly]: `/data/com.google.android.apps.maps/cache/image_manager_disk_cache/1d5071cb0596e4eed60b8733663f2c720 fa7d8c7f0d7645a2f5da89030c71c45.0`
+
+[^gare-prilly]: `/data/com.google.android.apps.maps/cache/image_manager_disk_cache/b917b3ad6904cf85ccbabe0c1d5103862 540ebc5be61a2644a19568a102a3484.0`
+
+On a, de la même manière, en cache un hôtel[^hotel-prilly] et la gare[^gare-prilly] de Prilly, une commune proche de Lausanne aussi.
+
+![Le pointeur correspond à Rte des Flumeaux 10, 1008 Prilly, un hôtel](figures/Export/1d5071cb0596e4eed60b8733663f2c720fa7d8c7f0d7645a2f5da89030c71c45.0){height=200px}
+
+![Gare de Prilly sur Google Maps](figures/Export/b917b3ad6904cf85ccbabe0c1d5103862540ebc5be61a2644a19568a102a3484.0){height=200px}
+
+[^gare-renens]: `/data/com.google.android.apps.maps/cache/image_manager_disk_cache/c231692d67d3c61df5f9aabdc84de244b 22bfa0453ec5c3d6de5d56daeca21ab.0`
+
+Enfin, toujours de la même manière, on a la gare de Renens[^gare-renens], une troisième commune attenante à Lausanne.
+
+![Gare de Renens sur Google Maps](figures/Export/c231692d67d3c61df5f9aabdc84de244b22bfa0453ec5c3d6de5d56daeca21ab.0){height=200px}
+
+De plus, un évènement de calendrier dans `/data/com.android.providers.calendar/databases/ calendar.db-journal` renseigne un train entre Lausanne et Genève prévu pour le 20 avril à 16 h 45.
+
+[^ICC]: [ICC][] est un centre d'affaires, proche de l'aéroport de Genève, qui loue des bureaux.
+
+On remarque aussi deux photos éloignées de Lausanne, une prise en train, le 15 avril 2021 à 9 h 17, et une devant [ICC][][^ICC], à Genève, le même jour, à 10 h 05.
+
+![Vue du train - `/media/0/DCIM/Camera/20210415_091733.jpg`](figures/Export/20210415_091733.jpg){height=200px}
+
+![[ICC][] - `/media/0/DCIM/Camera/20210415_100517.jpg`](figures/Export/20210415_100517.jpg){height=200px}
+
+Notons simplement qu'[ICC][] est situé à proximité du consulat de Turquie.
+
+![Localisation du Consulat de Turquie à Genève](figures/icc-turquie.png){height=175px}
+
+Pour mieux comprendre, il est nécessaire de déchiffrer les messages. Auparavant, terminons l'analyse des photos.
+
+
+### Transactions Bitcoin Cash (BCH)
+
+> On identifie les adresses BCH avec leurs 4 premiers et leurs 4 derniers caractères. On note une transaction de la même manière.
+
+Une capture d'écran avec l'adresse BCH [qpuv-d23y](https://www.blockchain.com/fr/explorer/addresses/bch/qpuv475w4wytd6agujpzfl9muzajf9le45nkefd23y) est présente.
+
+![Adresse BCH - `/clipboard/1740051371957_356_87/Screenshot_20210418-161954_BRD.jpg_thum.jpg`](figures/Export/Screenshot_20210418-161954_BRD.jpg_thum.jpg){height=300px}
+
+En regardant sur la blockchain, on retrouve l'historique de transactions de cette adresse :
+
+- [d14c-d8f2](https://www.blockchain.com/fr/explorer/transactions/bch/d14c75d148e7b4edbed737fbf6bef2e182aad47f30cd60f48c2a9176b73ad8f2)
+
+    - Notre adresse a envoyé, avec [qzef-sezu](https://www.blockchain.com/fr/explorer/addresses/bch/qzefkuy2cwwhsuxyhpcly25nel6uavvrdqxzcfsezu), 0.00730765 BCH (\$4.34) à [qp9d-qxyj](https://www.blockchain.com/fr/explorer/addresses/bch/qp9d3p7nl4j9agx9t326a8nu4437yjm80yy4tpqxyj).
+  
+    - L'adresse de destination n'a aucune autre transaction, mais l'autre adresse d'envoi a [9084-0ac7](https://www.blockchain.com/explorer/transactions/bch/908401f77c051d6a7b74b28d486ae3c53cb89305e064c6c08d0c22fe6d9d0ac7)
+
+        - [qzkl-kv4n](https://www.blockchain.com/fr/explorer/addresses/bch/qzklgmwtck0a4vg8fr203jhksmdym0k43yfschkv4n) et [qzs9-4k0c](https://www.blockchain.com/fr/explorer/addresses/bch/qzs90mtekda70zcdjsa95445sknntk4uhgp9zh4k0c) ont envoyé 0.00680453 BCH (\$4,04) à [qrxs-8h5p](https://www.blockchain.com/fr/explorer/addresses/bch/qrxs34f92tmu0z0vgskgrakx53ra7cmpxs29n68h5p) et [qzef-sezu](https://www.blockchain.com/fr/explorer/addresses/bch/qzefkuy2cwwhsuxyhpcly25nel6uavvrdqxzcfsezu)
+
+	  - Les autres adresses ont d'autres transactions et adresses associés
+
+- [bddf-e925](https://www.blockchain.com/explorer/transactions/bch/bddf7ed0ebfbb893208878f874266959c1780d49496bc061b41d6a93f361e925)
+
+    - [qqvl-dnqz](https://www.blockchain.com/fr/explorer/addresses/bch/qqvlfrz3qds6hulxce7tyavlj7y20zm75vyze4dnqz) a envoyé 0.00175909 BCH (\$1,04) à [qpuh-8g3g](https://www.blockchain.com/fr/explorer/addresses/bch/qpuhlyvwekzgfczj5r08at6wcm4yrx6rlukdz98g3g) et notre adresse
+
+    - L'adresse d'envoi a aussi la transaction [2845-de5f](https://www.blockchain.com/fr/explorer/transactions/bch/2845f76f97ec5bd192a627c113a619ed58ae0f66ac25f1b4bb058c7c5651de5f) associée
+
+        - ...
+
+Et ainsi de suite. On a donc trouvé de nombreuses adresses BCH, dont les transactions s'entremêlent, pour ce qui semble être de l'obfuscation. Cela pourrait permettre de masquer ou compliquer :
+
+- la chaîne de provenance (quelle adresse/quel portefeuille a fourni les fonds)
+- la chaîne de destination (où les fonds vont ensuite)
+- l’identité/attribution (lien entre adresse et personne ou service)
+- la chronologie (quand les transferts ont eu lieu, y compris ordre et corrélation temporelle)
+- le montant réel (par fragmentation ou autre)
 
 ## Messages
 

@@ -3,7 +3,7 @@
 [^Locard]: Chaque interaction laisse une trace
 [^5WH]: Who, what, when, where, why, and how
 
-L'objectif de ce premier projet de *Mobile Forensic* est de réaliser une investigation sur une image de smartphone, dans un contexte préétabli, afin de mettre en évidence des preuves numériques pertinentes pour une enquête.
+L'objectif de ce premier projet de Mobile Forensic est de réaliser une investigation sur une image de smartphone, dans un contexte préétabli, afin de mettre en évidence des preuves numériques pertinentes pour une enquête.
 
 Par définition, la *Digital Forensics*, ici appliqué aux environnements mobiles, regroupe *l'ensemble de méthodes et d'outils visant à récupérer, préserver et examiner des preuves numériques issues ou transmises par des dispositifs électroniques*.  
 Ce domaine s'appuie sur le principe de Locard[^Locard], et vise à répondre aux 5WH[^5WH].

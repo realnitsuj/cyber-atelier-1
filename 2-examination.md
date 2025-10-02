@@ -37,7 +37,7 @@ Cela va nous permettre d'examiner facilement toutes les données d'intérêt, ch
 
 ## Identité
 
-Commençons par présenter le propriétaire du téléphone : il se nomme Werner von Strucker. Il s'agit du nom d'un caractère fictif de Marvel, lié à [HYDRA][]. Voir <https://en.wikipedia.org/wiki/Werner_von_Strucker>.
+Commençons par présenter le propriétaire du téléphone : il se nomme Werner von Strucker.
 
 ![Informations civiles - `/system_ce/0/snapshots/141_reduced.jpg`](figures/Export/141_reduced.jpg){height=290px}
 
@@ -57,11 +57,11 @@ Cette découverte confirme l'identité du propriétaire et révèle l'utilisatio
 
 [^bddGM]: `/data/com.google.android.gm/databases/peopleCache_vonstruckerwerner@gmail.com _com.google_11.db`
 
-Une base de données GMail[^bddGM] donne un aperçu de ses contacts par mail. Notons les adresses :
+Une base de données GMail[^bddGM] donne un aperçu de ses contacts par mail. Notons les adresses qui ne proviennent pas de marques :
 
 - `vonstruckerwerner@gmail.com` : vraisemblablement son adresse personnelle.
-- `therealredskull41@gmail.com` : [Red Skull](https://en.wikipedia.org/wiki/Red_Skull) est un personnage fictif du même univers que Werner von Strucker.
-- `arthur.kart@yopmail.com` : un contact personnel. Nous n'avons rien trouvé de plus à son sujet, mais c'est la seule autre adresse qui n'est pas une marque.
+- `therealredskull41@gmail.com` : nous reviendrons sur Red Skull dans l'*Analysis*, voir \ref{analysis}.
+- `arthur.kart@yopmail.com` : un contact personnel. Nous n'avons rien trouvé de plus à son sujet.
 
 
 ## Photographies
@@ -94,7 +94,7 @@ Cette observation est corroborée par le restaurant mentionné sur Instagram et 
 
 Parmi les photos intéressantes, on remarque une photo du logo d'[HYDRA][], datant du 8 avril 2021, avec un lien. Celui-ci est inaccessible, et nous n'avons pas pu trouvé d'informations à son sujet. Elle a été prise à l'Université de Lausanne, selon sa localisation.
 
-![Logo d'[HYDRA][] - `/media/0/DCIM/Camera/20210408_182133.jpg`](figures/Export/20210408_182133.jpg){height=200px}
+![Logo d'[HYDRA][] - `/media/0/DCIM/Camera/20210408_182133.jpg`\label{fig:hydra}](figures/Export/20210408_182133.jpg){height=200px}
 
 [^univ]: Puisqu'il serait né le 01/01/1980 d'après ses informations Google
 
@@ -136,7 +136,11 @@ Notons simplement qu'[ICC][] est situé à proximité du consulat de Turquie.
 
 ![Localisation du Consulat de Turquie à Genève](figures/icc-turquie.png){height=175px}
 
-Pour mieux comprendre, il est nécessaire de déchiffrer les messages. Auparavant, terminons l'analyse des photos.
+Enfin, une capture d'écran d'un vol Genève - New York, pour le 20 avril 2021, est retrouvé dans le cache du presse-papier. Il s'agit du vol avant lequel Werner a été appréhendé.
+
+![Réservation de vol - `/clipboard/2139570144642_471_195/Screenshot_20210418-174639_Chrome.jpg`](figures/Export/Screenshot_20210418-174639_Chrome.jpg){height=300px}
+
+Pour mieux comprendre la situation, il est nécessaire de déchiffrer les messages. Auparavant, terminons l'analyse des photos.
 
 
 ### Transactions Bitcoin Cash (BCH)
@@ -297,7 +301,7 @@ Pour décoder on va donc :
 
 Cela nous a permis de pouvoir pouvoir lire les 42 messages qui ont été jusqu'alors illisibles.
 
-### Messages décodés
+### Messages décodés \label{messages-dec}
 
 Voici une partie de ces messages considérés comme les plus importants pour notre travail.
 

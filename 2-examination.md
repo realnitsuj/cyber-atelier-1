@@ -39,7 +39,7 @@ Cela va nous permettre d'examiner facilement toutes les données d'intérêt, ch
 
 Commençons par présenter le propriétaire du téléphone : il se nomme Werner von Strucker.
 
-![Informations civiles - `/system_ce/0/snapshots/141_reduced.jpg`](figures/Export/141_reduced.jpg){height=290px}
+![Informations civiles - `/system_ce/0/snapshots/141_reduced.jpg`\label{fig:infos}](figures/Export/141_reduced.jpg){height=290px}
 
 ### Profil Instagram
 
@@ -96,7 +96,7 @@ Parmi les photos intéressantes, on remarque une photo du logo d'[HYDRA][], data
 
 ![Logo d'[HYDRA][] - `/media/0/DCIM/Camera/20210408_182133.jpg`\label{fig:hydra}](figures/Export/20210408_182133.jpg){height=200px}
 
-[^univ]: Puisqu'il serait né le 01/01/1980 d'après ses informations Google
+[^univ]: Puisqu'il serait né le 01/01/1980 d'après la Figure \ref{fig:infos}
 
 Il y a deux autres photos à l'Université, cela montre qu'il est potentiellement professeur ou chercheur, et peut-être étudiant[^univ].
 
@@ -106,19 +106,19 @@ On trouve par ailleurs le fichier `/data/com.google.android.apps.maps/cache/imag
 
 ![Gare de Bussigny sur Google Maps](figures/Export/08c1ccbdafb163c39925d5bbd6bab77c9f4c6012590ec3552e109f6026e591b3.0){height=200px}
 
-[^hotel-prilly]: `/data/com.google.android.apps.maps/cache/image_manager_disk_cache/1d5071cb0596e4eed60b8733663f2c720 fa7d8c7f0d7645a2f5da89030c71c45.0`
+[^hotel-prilly]: `/data/com.google.android.apps.maps/cache/image_manager_disk_cache/1d5071cb0596e4eed60b873 3663f2c720fa7d8c7f0d7645a2f5da89030c71c45.0`
 
-[^gare-prilly]: `/data/com.google.android.apps.maps/cache/image_manager_disk_cache/b917b3ad6904cf85ccbabe0c1d5103862 540ebc5be61a2644a19568a102a3484.0`
+[^gare-prilly]: `/data/com.google.android.apps.maps/cache/image_manager_disk_cache/b917b3ad6904cf85ccbabe0 c1d5103862540ebc5be61a2644a19568a102a3484.0`
 
-On a, de la même manière, en cache un hôtel[^hotel-prilly] et la gare[^gare-prilly] de Prilly, une commune proche de Lausanne aussi.
+On a aussi un hôtel[^hotel-prilly] (en retrouvant l'adresse indiquée par le pointeur) et la gare[^gare-prilly] de Prilly, une commune proche de Lausanne aussi.
 
-![Le pointeur correspond à Rte des Flumeaux 10, 1008 Prilly, un hôtel](figures/Export/1d5071cb0596e4eed60b8733663f2c720fa7d8c7f0d7645a2f5da89030c71c45.0){height=200px}
+![Hôtel à Route des Flumeaux 10, 1008 Prilly, Suisse](figures/Export/1d5071cb0596e4eed60b8733663f2c720fa7d8c7f0d7645a2f5da89030c71c45.0){height=200px}
 
 ![Gare de Prilly sur Google Maps](figures/Export/b917b3ad6904cf85ccbabe0c1d5103862540ebc5be61a2644a19568a102a3484.0){height=200px}
 
-[^gare-renens]: `/data/com.google.android.apps.maps/cache/image_manager_disk_cache/c231692d67d3c61df5f9aabdc84de244b 22bfa0453ec5c3d6de5d56daeca21ab.0`
+[^gare-renens]: `/data/com.google.android.apps.maps/cache/image_manager_disk_cache/c231692d67d3c61df5f9aab dc84de244b22bfa0453ec5c3d6de5d56daeca21ab.0`
 
-Enfin, toujours de la même manière, on a la gare de Renens[^gare-renens], une troisième commune attenante à Lausanne.
+Enfin, on trouve la gare de Renens[^gare-renens], une troisième commune attenante à Lausanne.
 
 ![Gare de Renens sur Google Maps](figures/Export/c231692d67d3c61df5f9aabdc84de244b22bfa0453ec5c3d6de5d56daeca21ab.0){height=200px}
 
@@ -138,7 +138,7 @@ Notons simplement qu'[ICC][] est situé à proximité du consulat de Turquie.
 
 Enfin, une capture d'écran d'un vol Genève - New York, pour le 20 avril 2021, est retrouvé dans le cache du presse-papier. Il s'agit du vol avant lequel Werner a été appréhendé.
 
-![Réservation de vol - `/clipboard/2139570144642_471_195/Screenshot_20210418-174639_Chrome.jpg`](figures/Export/Screenshot_20210418-174639_Chrome.jpg){height=300px}
+![Billet d'avion - `/clipboard/2139570144642_471_195/Screenshot_20210418-174639_Chrome.jpg`](figures/Export/Screenshot_20210418-174639_Chrome.jpg){height=300px}
 
 Pour mieux comprendre la situation, il est nécessaire de déchiffrer les messages. Auparavant, terminons l'analyse des photos.
 
@@ -312,7 +312,7 @@ Heil Hydra \emoji{octopus}!
 Conversation du 15 avril 2021 :
 
 We need to meet you. Get to geneva asap, further instructions will follow.
-:   `HHYbm0jyH9MsbIM1DsyvNU9iDm63RQa9/1Fxfrs/A75m3wAM04VwDGphJ4m9IUTjPQ//3qbJmQk xQQeu50WmK0zLHj93BiByuFEHsvHwzcfHsI`
+:   `HHYbm0j yH9MsbIM1DsyvNU9iDm63RQa9/1Fxfrs/A75m3wAM04VwDGphJ4m9IUTjPQ//3qbJmQk xQQeu 50WmK0zLHj93BiByuFEHsvHwzcfHsI`
 
 understood, was headed to geneva anyway, already on a train.
 :   `S6+p9IajgCnkXIm0tou uBzw/c5dSk4ZVzCEeA7BZmnR7+J5ybgmhLeXCyxpwovM8yFaK1NQtfAJXHKwHnMGIxg==`

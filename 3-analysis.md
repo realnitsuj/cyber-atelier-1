@@ -18,13 +18,13 @@ Par ailleurs, le fait que les messages ait été échangés via [OmniNotes][] mo
 
 La conversation du 15 avril 2021 montre qu'il se rendait à Genève pour rencontrer l'organisation.
 
-On voit sur la Figure \ref{fig:icc} qu'il se trouvait près d'[ICC][] le 15 avril 2021.
+On voit sur la figure \ref{fig:icc} qu'il se trouvait près d'[ICC][] le 15 avril 2021.
 
 On remarque qu'[ICC][] est situé à proximité du consulat de Turquie.
 
 ![Localisation du Consulat de Turquie à Genève](figures/icc-turquie.png){height=175px}
 
-Cela fait donc sens avec les messages : Werner c'est rendu à Genève pour rencontrer [HYDRA][], peut-être dans un bureau d'[ICC][]
+Cela fait donc sens avec les messages : Werner s'est rendu à Genève pour rencontrer [HYDRA][], peut-être dans un bureau d'[ICC][]
 
 On a remarqué précédemment (voir \ref{localisation})
 

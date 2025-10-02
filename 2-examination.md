@@ -167,7 +167,8 @@ En regardant sur la blockchain, on retrouve l'historique de transactions de cett
 
         - ...
 
-Et ainsi de suite. On a donc trouvé de nombreuses adresses BCH, dont les transactions s'entremêlent, pour ce qui semble être de l'obfuscation. Cela pourrait permettre de masquer ou compliquer :
+Et ainsi de suite. Toutes les transactions semblent avoir eu lieu le 18 avril 2021.  
+On a donc trouvé de nombreuses adresses BCH, dont les transactions s'entremêlent, pour ce qui semble être de l'obfuscation. Cela pourrait permettre de masquer ou compliquer :
 
 - la chaîne de provenance (quelle adresse/quel portefeuille a fourni les fonds)
 - la chaîne de destination (où les fonds vont ensuite)

@@ -4,7 +4,7 @@
 
 Pour examiner l'image, nous allons utiliser principalement le logiciel [Autopsy][]. Celui-ci permet d'analyser et d'extraire toutes les informations potentiellement utiles d'une image disque : métadonnées, conversations, journal d'appels, mails, contacts...
 
-Nous allons commencer par montrer le plus visible, en allant vers les données plus compliquées à extraire, ce qui inclus les messages encodés, mentionnés précédemment comme étant pertinents.
+Nous allons commencer par montrer le plus visible, en allant vers les données plus compliquées à extraire, ce qui inclut les messages encodés, mentionnés précédemment comme étant pertinents.
 
 ## Mise en place de l'environnement de travail
 
@@ -177,7 +177,7 @@ On a donc trouvé de nombreuses adresses BCH, dont les transactions s'entremêle
 
 ## Messages
 
-L'examen des données extraites du téléphones du suspect a permis de révéler la présence de messages illisibles reçus et envoyés, suggérant l'utilisation de méthodes d'encryption des messages.
+L'examen des données extraites du téléphone du suspect a permis de révéler la présence de messages illisibles reçus et envoyés, suggérant l'utilisation de méthodes d'encryption des messages.
 
 Par exemple : `2 2 +41786909109  1617901761280 0  1 -1 2   HHY6cKEMFlNU3NPs/bxhxPKQ RyDXUrQK7a8tHtX5xBXdYQ=  0 0 1 it.feio.android.omninotes 1 0 0 228015930119996 0    0 0  0 0 0  0  0 0 0 0 0 0 0  0
 `
@@ -294,7 +294,7 @@ Pour décoder on va donc :
 2. traduire depuis la base64
 3. décoder AES grâce à la clé créée à partir de `rb5CuefkDLyb9T` et de la date d'envoi du message
 
-Cela nous a permis de pouvoir pouvoir lire les 42 messages qui ont été jusqu'alors illisibles.
+Cela nous a permis de pouvoir lire les 42 messages qui ont été jusqu'alors illisibles.
 
 ### Messages décodés \label{messages-dec}
 

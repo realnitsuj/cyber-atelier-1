@@ -78,7 +78,7 @@ Deux des images postées sur Instagram correspondent exactement aux photos trouv
 
 2. **La photo de piadina** : Correspondant à `/media/0/DCIM/20210420_125202.jpg`, également trouvée sur l'appareil
    
-   ![Photo de *piadina* sur Instagram](figures/instagram-piadina.png){height=250px}
+   ![Photo de *piadina* sur Instagram](figures/instagram-piadina.png){height=200px}
 
    On remarque également un lieu posté avec ce met : **Piadineria Mamma Mia**, un restaurant italien situé à Lausanne.
 
@@ -86,9 +86,10 @@ Cette corrélation confirme de manière irréfutable l'appartenance du profil In
 
 ### Localisation
 
-16 photos ont une localisation associée. On voit donc sur la carte que l'utilisateur en a pris uniquement en Suisse, principalement aux abords de Lausanne.
+16 photos ont une localisation associée. [Autopsy][] permet d'extraire toutes ces localisations, et de les représenter sur une carte.  
+On voit donc que l'utilisateur en a pris uniquement en Suisse, principalement aux abords de Lausanne.
 
-![Carte des photos géolocalisées](figures/localisation.png){height=300px}
+![Carte des photos géolocalisées](figures/localisation.png){height=200px}
 
 Cette observation est corroborée par le restaurant mentionné sur Instagram et confirme la présence du suspect dans la région lausannoise, renforçant ainsi la cohérence géographique de ses déplacements.
 
@@ -99,8 +100,6 @@ Parmi les photos intéressantes, on remarque une photo du logo d'[HYDRA][], data
 [^univ]: Puisqu'il serait né le 01/01/1980 d'après la Figure \ref{fig:infos}
 
 Il y a deux autres photos à l'Université, cela montre qu'il est potentiellement professeur ou chercheur, et peut-être étudiant[^univ].
-
-***
 
 On trouve par ailleurs le fichier `/data/com.google.android.apps.maps/cache/image_manager_ disk_cache/08c1ccbdafb163c39925d5bbd6bab77c9f4c6012590ec3552e109f6026e591b3.0`, qui est une image cache de Google Maps de la commune de Bussigny, attenante à Lausanne, plus précisément de sa gare.
 
@@ -130,11 +129,7 @@ On remarque aussi deux photos éloignées de Lausanne, une prise en train, le 15
 
 ![Vue du train - `/media/0/DCIM/Camera/20210415_091733.jpg`](figures/Export/20210415_091733.jpg){height=200px}
 
-![[ICC][] - `/media/0/DCIM/Camera/20210415_100517.jpg`](figures/Export/20210415_100517.jpg){height=200px}
-
-Notons simplement qu'[ICC][] est situé à proximité du consulat de Turquie.
-
-![Localisation du Consulat de Turquie à Genève](figures/icc-turquie.png){height=175px}
+![[ICC][] - `/media/0/DCIM/Camera/20210415_100517.jpg`\label{fig:icc}](figures/Export/20210415_100517.jpg){height=200px}
 
 Enfin, une capture d'écran d'un vol Genève - New York, pour le 20 avril 2021, est retrouvé dans le cache du presse-papier. Il s'agit du vol avant lequel Werner a été appréhendé.
 

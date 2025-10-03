@@ -24,9 +24,7 @@ On remarque qu'[ICC][] est situé à proximité du consulat de Turquie.
 
 ![Localisation du Consulat de Turquie à Genève](figures/icc-turquie.png){height=175px}
 
-Cela fait donc sens avec les messages : Werner s'est rendu à Genève pour rencontrer [HYDRA][], peut-être dans un bureau d'[ICC][]
-
-On a remarqué précédemment (voir \ref{localisation})
+Cela fait donc sens avec les messages : Werner s'est rendu à Genève pour rencontrer [HYDRA][], peut-être dans un bureau d'[ICC][], comme on a remarqué précédemment (voir \ref{localisation}).
 
 
 ## Implication dans le Skimming

@@ -323,9 +323,9 @@ Good. Meet us at our base. Below the Turkish consulate. Delete this message once
 **Phrase d'introduction pour garder un lien avec les parties.**
 
 
-L'enregistrement intitulé `2021_04_09T1621` présente des éléments suspects. Après une première écoute, il apparaît presque vide, ne contenant que deux bruits sourds. Or, la personne mise en cause dans cette affaire fait l'objet de soupçons de fraude à la carte bancaire et les autorités ont retrouvés un dispositif suspect sur un atm à Genève.
+L'enregistrement intitulé `2021_04_09T1621` présente des éléments suspects. Après une première écoute, il apparaît presque vide, ne contenant que deux bruits sourds. Or, la personne mise en cause dans cette affaire fait l'objet de soupçons de fraude à la carte bancaire et les autorités ont retrouvés un dispositif suspect sur un distributeur automatique de billets (ATM) à Genève.
 
-Après quelques recherches, il apparaît que l'appareil retrouvé sur le distributeur automatique de billets (ATM) pourrait correspondre à un **skimming device**, c'est-à-dire un dispositif destiné à copier frauduleusement les informations contenues sur la bande magnétique d'une carte bancaire lorsque celle-ci est insérée dans un lecteur.
+Après quelques recherches, il apparaît que l'appareil retrouvé sur l'ATM pourrait correspondre à un **skimming device**, c'est-à-dire un dispositif destiné à copier frauduleusement les informations contenues sur la bande magnétique d'une carte bancaire lorsque celle-ci est insérée dans un lecteur.
 
 **[Schéma de fonctionnement]**
 

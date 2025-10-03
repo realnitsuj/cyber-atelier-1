@@ -29,4 +29,19 @@ Cela fait donc sens avec les messages : Werner s'est rendu à Genève pour renco
 
 ## Implication dans le Skimming
 
-Les adresses BCH 
+<!--Les adresses BCH sont vraisembla-->
+
+Donc notre suspect se trouvait bien en possession d'un enregistrement audio cachant des informations bancaires, sans doute volées et ceci constitue un délit.
+
+
+L'examen des données a mis en évidence plusieurs éléments reliant Werner von Strucker à des activités de skimming :
+
+- Transactions en Bitcoin Cash : les adresses BCH retrouvées (figure 2.14) révèlent un schéma de transferts multiples entre différentes adresses créées et utilisées le 18 avril 2021. Ce mode d'opération correspond à une tentative claire d'obfuscation visant à masquer la provenance et la destination réelle des fonds. Ce type de fragmentation et de réinjection est fréquemment observé dans les réseaux de fraude bancaire.
+
+- Audio de skimming : le fichier `2021_04_09T1621` contient une piste correspondant aux enregistrements typiques d'un audioskim. L'analyse avec [Magstripper][] puis le décodage manuel de la Track 2 ont permis d'identifier un numéro de carte valide (4099 7939 7756 2804). Cela confirme que l'appareil détenu par Werner contenait bien des données issues d'un dispositif de skimming installé sur un ATM.
+
+- Corrélation temporelle : la date de l'enregistrement (9 avril 2021) coïncide avec la découverte d'un skimmer sur un distributeur de la Poste suisse à Lausanne (voir Identification). Cette concordance renforce la responsabilité du suspect.
+
+- Tentative d'utilisation : enfin, Werner a été arrêté avec un billet d'avion Genève–New York acheté via une carte bancaire volée. Cet élément complète la chaîne probatoire reliant la possession des données frauduleuses à leur usage concret.
+
+En conclusion, les preuves matérielles (transactions crypto, audio de piste magnétique, billet d'avion) établissent l'implication directe de Werner von Strucker dans un réseau organisé de fraude bancaire par skimming, en lien avec HYDRA.

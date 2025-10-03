@@ -320,19 +320,128 @@ Good. Meet us at our base. Below the Turkish consulate. Delete this message once
 
 ## Skimming
 
-**Phrase d'introduction pour garder un lien avec les parties.**
+<!--**Phrase d'introduction pour garder un lien avec les parties.**-->
 
 
-L'enregistrement intitulé `2021_04_09T1621` présente des éléments suspects. Après une première écoute, il apparaît presque vide, ne contenant que deux bruits sourds. Or, la personne mise en cause dans cette affaire fait l'objet de soupçons de fraude à la carte bancaire et les autorités ont retrouvés un dispositif suspect sur un distributeur automatique de billets (ATM) à Genève.
+L'enregistrement intitulé `2021_04_09T1621` présente des éléments suspects. Après une première écoute, il apparaît presque vide, ne contenant que deux bruits sourds.
 
-Après quelques recherches, il apparaît que l'appareil retrouvé sur l'ATM pourrait correspondre à un **skimming device**, c'est-à-dire un dispositif destiné à copier frauduleusement les informations contenues sur la bande magnétique d'une carte bancaire lorsque celle-ci est insérée dans un lecteur.
+![Spectre de l'audio ([Audacity](https://www.audacityteam.org/))](figures/skimming/enregistrement-audacity.png)
 
-**[Schéma de fonctionnement]**
+Or, la personne mise en cause dans cette affaire fait l'objet de soupçons de fraude à la carte bancaire et les autorités ont retrouvés un dispositif suspect sur un distributeur automatique de billets (ATM) à Lausanne, comme expliqué dans la partie identification de ce rapport.
 
-Des exemples de skimming devices disponibles en ligne montrent que certains comportent également une piste audio et sont appelés « audioskim ». Il est donc plausible que l'enregistrement provienne de cet appareil. De plus, le titre de l'enregistrement, incluant une date, suggère qu'il correspond à une capture audio réalisée à un instant précis et conforte la thèse de l'enregistrement de données de carte bancaire.
+Après quelques recherches, il apparaît que l'ATM pourrait correspondre à un skimming device, c'est-à-dire un dispositif destiné à copier frauduleusement les informations contenues sur la bande magnétique d'une carte bancaire lorsque celle-ci est insérée dans un lecteur.
 
-![Appareil de skimming](figures/skimming/appareil-skimming.png){height=200px}
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}[node distance=2cm, >=Stealth]
 
+\node (left) {\includegraphics[width=0.3\textwidth]{figures/skimming/schema1/img1.png}};
+
+\node[right=of left, yshift=2cm] (right1) {\includegraphics[width=0.25\textwidth]{figures/skimming/schema1/img2.jpg}};
+\node[right=of left, yshift=-2cm] (right2) {\includegraphics[width=0.25\textwidth]{figures/skimming/schema1/img3.jpg}};
+
+\draw[->, thick] (left.east) -- (right1.west);
+\draw[->, thick] (left.east) -- (right2.west);
+
+\end{tikzpicture}
+\caption{Skimming device}
+\end{figure}
+
+
+Des exemples de skimming devices disponibles en ligne montrent que certains comportent également une piste audio et sont appelés « audioskim ». Il est donc plausible que l'enregistrement provienne de cet appareil. De plus, le titre de l'enregistrement, incluant une date (`2021_04_09T1621`), suggère qu'il correspond à une capture audio réalisée à un instant précis et conforte la thèse de l'enregistrement de données de carte bancaire.
+
+![Exemple d'audioskim](figures/skimming/appareil-skimming.png){height=200px}
+
+Pour arriver à décoder la piste audio, il faut comprendre la manière dont fonctionne les skimming devices. On peut voir leur architecture comme une version miniature d'un lecteur de bande magnétique, communément utilisé dans les systèmes d'accès par carte.
 
 ### Fonctionnement d'un *skimming device*
 
+Tout d'abord, les cartes magnétiques sont composées de 3 pistes sur leur bande magnétique. On les appelle les track (en anglais) et chacune est composée de petites particules aimantées qui peuvent être polarisées dans deux directions : nord ou sud. Chaque polarisation correspond à un 1 ou un 0 en langage binaire.
+
+![Polarisation d'une carte magnétique](figures/skimming/polarisation.jpg)
+
+| Track   | Bits / caractère        | Caractères possibles                      | Caractères max | Usage typique                                | Structure standard                          |
+|:-------:|:-----------------------:|:-----------------------------------------:|:-------------------------:|:--------------------------------------------:|:-------------------------------------------:|
+| **1** | 7 bits (6 data + 1 parité) | Lettres majuscules, chiffres, ponctuation | **79**                        | Nom du porteur + PAN                         | `%B[ PAN ]^[ NOM ]^[ ... ]?`                  |
+| **2** | 5 bits (4 data + 1 parité) | Chiffres (0–9) + ;, =, ?                 | **40**                        | PAN (numéro de carte), date exp., code service | `;[ PAN ]=[ données additionnelles ]?`        |
+| **3** | 5 bits (4 data + 1 parité) | Chiffres et symboles (similaire Track-2) | **107**                       | Rare (applications locales, transport, bancaire) | Format non standardisé (varie)              |
+
+ : Présentation des trois tracks
+
+Le tableau ci-dessous présente les trois pistes (tracks) des cartes magnétiques et leurs caractéristiques d'encodage, en précisant le type d'informations stockées et leur capacité.
+
+La track 2, utilisée principalement pour les cartes bancaires, stocke les informations essentielles aux transactions, telles que le numéro de compte, la date d'expiration et d'autres données nécessaires à l'authentification et au traitement sécurisé des paiements.
+
+Quand on passe la carte dans un lecteur, celui-ci détecte les variations de polarisation de la bande magnétique et les traduit en informations numériques, ce qui permet d'identifier la carte et d'accéder aux données stockées. À l'intérieur du lecteur, une véritable chaîne de traitement prend en charge ce processus : une bobine capte les changements de polarité et un microcontrôleur analyse ces signaux pour reconstruire les données codées sur la carte, comme illustré sur le schéma \ref{fig:fonc}.
+
+\newpage
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}[node distance=2cm, >=Stealth]
+
+\node (left) {\includegraphics[width=0.3\textwidth]{figures/skimming/schema2/img1.jpg}};
+
+\node[right=of left] (right) {\includegraphics[width=0.3\textwidth]{figures/skimming/schema2/img2.jpg}};
+
+\draw[->, thick] (left.east) -- (right.west);
+
+\end{tikzpicture}
+\caption{Fonctionnement d'un skimming device}
+\label{fig:fonc}
+\end{figure}
+
+### Interprétation de notre audio
+
+Voici un résumé détaillé, étape par étape, de la chaîne de traitement, illustrant comment le lecteur capte, analyse et interprète les données stockées sur la carte magnétique.
+
+![Chaîne de traitement d'un ATM](figures/skimming/chaine.png)
+
+[^F2F]: Frequency To Frequency
+
+Dans notre cas, on se trouve à la fin de l'étape 4, il faut désormais convertir la piste audio en bits puis décoder ceci suivant un procédé de décodage propre aux track 2. En résumé, nous devons réaliser ces 2 étapes : réglage horloge et décodage F2F[^F2F].
+
+![Horloge et décodage F2F](figures/skimming/etapes.png)
+
+Le codage F2F représente les bits par des changements de polarité sur la bande magnétique. Pour décoder, on regarde les transitions : une transition au début correspond à un 0, et des transitions au début et au milieu correspondent à un 1.
+
+Le lecteur ou le programme analyse ces transitions pour reconstruire les 0 et 1 et extraire les données.
+
+![F2F](figures/skimming/f2f.jpeg)
+
+Ici, pour convertir le signal en bits on utilise [Magstripper][], un logiciel qui permet de récupérer le binaire à partir d'un fichier `.wav` (il réalise les opérations de récupération des horloges et de conversion des transitions en bits).
+
+![[Magstripper][]](figures/skimming/magstripper.png)
+
+Pour des raisons légales, aucun outil en ligne n'autorise le décodage direct du format binaire de la piste 2 d'une carte bancaire ; c'est pourquoi nous avons développé un code python dédié.
+
+<!--![Code illégal](figures/skimming/code-illegal.png)-->
+
+```{.python .numberLines}
+bits = "000111111111111111111111100001000000001100001001111001000011..."
+
+table = "0123456789:;<=>?"
+
+for i in range(0, len(bits), 5):
+    groupe = bits[i:i+5]
+    if len(groupe) == 5:
+        print(table[int(groupe[:4], 2)], end='')
+
+print()
+```
+
+Ce code décode des données binaires de carte magnétique en parcourant une longue chaîne de 0 et de 1 par groupes de 5 bits à la fois grâce à la boucle `for i in range(0, len(bits), 5)`{.python} qui saute de 5 en 5 caractères (positions 0, 5, 10, 15, etc.).
+
+Pour chaque groupe de 5 bits extrait avec `bits[i:i+5]`{.python}, le code vérifie qu'il contient bien 5 caractères, puis prend uniquement les 4 premiers bits avec `groupe[:4]`{.python} (le 5ème étant un bit de parité utilisé pour détecter les erreurs), convertit ces 4 bits de binaire en nombre décimal avec `int(..., 2)`{.python} (par exemple "0001" devient 1, "1111" devient 15), et utilise ce nombre comme index pour récupérer le caractère correspondant dans la table de conversion "0123456789:;<=>?", où chaque position représente un caractère valide du format Track 2 des cartes magnétiques (les chiffres 0-9, les séparateurs ; et =, et le terminateur ?).
+
+Le `print(..., end='')`{.python} affiche chaque caractère décodé sans retour à la ligne pour former une chaîne continue, et le `print()`{.python} final ajoute un retour à la ligne à la fin, produisant ainsi le contenu lisible de la piste magnétique qui contient typiquement le numéro de carte, la date d'expiration et d'autres informations entre les marqueurs ;, = et ?.
+
+On obtient comme résultat :
+
+<!--![](figures/skimming/resultat.png)-->
+
+`1????00103910000001029042=4082657793979904;00000000>26420;420940800000089<08111?800 000000000`
+
+On remarque que le seul nombre qui est bien balisé (respecte le format de la track 2) et qui contient le nombre exact de chiffres d'une carte bancaire est 4082 6577 9397 9904 (situé entre un « = » et un « ; » et constitué de 16 chiffres). Or en utilisant le site credit-card validator, on se rend compte que cette carte n'existe pas. On applique donc des méthodes de stéganographie à notre chaine de numéros pour retrouver le bon numéro. En inversant chaque bloc de 4 chiffres, puis en inversant l'ordre des blocs, on obtient ce numéro : 4099 7939 7756 2804. Désormais, on peut lire les renseignements de la carte sur credit-card validator :
+
+![Credit Card validator](figures/skimming/credit-card-validator.jpeg)

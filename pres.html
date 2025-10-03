@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Justin Bossard">
+  <meta name="author" content="Mattéo Gouhier">
+  <meta name="author" content="Paul Mathé">
+  <meta name="author" content="Samuel Plet">
+  <title>Atelier 1 : Mobile Forensics</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/reveal.css">
+  <style>
+    .reveal .sourceCode {  /* see #7635 */
+      overflow: visible;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/theme/white.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Atelier 1 : Mobile Forensics</h1>
+  <p class="subtitle"><em>8INF968 - Atelier pratique en cybersécurité
+I</em></p>
+  <p class="author">Justin Bossard</p>
+  <p class="author">Mattéo Gouhier</p>
+  <p class="author">Paul Mathé</p>
+  <p class="author">Samuel Plet</p>
+</section>
+
+<section>
+<section id="introduction" class="title-slide slide level1">
+<h1>Introduction</h1>
+<ul>
+<li>Principe de Locard</li>
+<li>5WH</li>
+</ul>
+<p>Garantir :</p>
+<ul>
+<li>intégrité des preuves</li>
+<li>recevabilité juridique</li>
+</ul>
+<p><strong>Chaîne de confiance</strong></p>
+</section>
+<section id="processus-légal" class="title-slide slide level2">
+<h2>Processus légal</h2>
+<div>
+<ol type="1">
+<li class="fragment">Identification</li>
+<li class="fragment">Collection</li>
+<li class="fragment">Examination</li>
+<li class="fragment">Analysis</li>
+<li class="fragment">Presentation</li>
+</ol>
+</div>
+</section>
+</section>
+<section id="plan" class="title-slide slide level1">
+<h1>Plan</h1>
+<ol type="1">
+<li>Identification et Collection</li>
+<li>Examination</li>
+<li>Analysis</li>
+</ol>
+</section>
+
+<section id="identification-et-collection"
+class="title-slide slide level1">
+<h1>Identification et Collection</h1>
+<blockquote>
+<p>Contexte : Partie 3 du DFRWS 2021</p>
+</blockquote>
+<ol type="1">
+<li><p><em>09/04/2021</em> Dispositif de skimming trouvé à Lausanne.
+Micro-SD retrouvée</p></li>
+<li><p><em>18/04/2021</em> RPi connecté à une imprimante 3D
+saisie.</p></li>
+<li><p><em>20/04/2021</em> Appréhension suspect, aéroport de Genève</p>
+<p>Téléphone saisi, image extraite lendemain</p></li>
+</ol>
+<!---->
+<!--#-->
+<!---->
+<!--![](intro.jpeg){height=500px}-->
+<!---->
+<!--# Le chiffrement homomorphique-->
+<!---->
+<!--## Définition générale-->
+<!---->
+<!--::: notes-->
+<!--Justin-->
+<!--:::-->
+<!---->
+<!--Le chiffrement homomorphique est une forme de cryptographie qui permet d’effectuer des opérations sur des données chiffrées, sans jamais avoir besoin de les déchiffrer.-->
+<!---->
+<!--***-->
+<!---->
+<!--::: notes-->
+<!--Justin-->
+<!--:::-->
+<!---->
+<!--Soit $m_{1}$ et $m_{2}$ deux messages clairs, $\star$ et $\circ$ deux opérations simples et $E$ un schéma de chiffrement.  -->
+<!--$E$ est dit homomorphe si on a :$$E(m_{1} \star m_{2}) = E(m_{1}) \circ E(m_{2})$$-->
+<!---->
+<!--## Comment ça marche ?-->
+<!---->
+<!--::: notes-->
+<!--Tom-->
+<!--:::-->
+<!---->
+<!--![](../figure1.png)-->
+<!---->
+<!--***-->
+<!---->
+<!--::: incremental-->
+<!---->
+<!--1. La fonction de génération de clés-->
+<!---->
+<!--2. La fonction de chiffrement-->
+<!---->
+<!--3. La fonction d'évaluation (opérations sur les données chiffrées)-->
+<!---->
+<!--4. La fonction de déchiffrement-->
+<!--:::-->
+<!---->
+<!--## Principes à respecter-->
+<!---->
+<!--::: notes-->
+<!--Tom-->
+<!--:::-->
+<!---->
+<!--::: incremental-->
+<!---->
+<!--1. Chiffrement sûr ou presque-sûr, besoins des systèmes d'information (confidentialité, authentification, intégrité, non-répudiation et disponibilité), principe de Kerckhoff-->
+<!---->
+<!--2. Correction (Correctness)-->
+<!---->
+<!--   ::: nonincremental-->
+<!--   - Le bruit introduit dans le chiffrement-->
+<!--   - La précision et l'encodage (cas du chiffrement de nombres réels)-->
+<!--   :::-->
+<!---->
+<!--   $\Rightarrow$ e.g. : **Bootstrapping**-->
+<!---->
+<!--:::-->
+<!---->
+<!--***-->
+<!---->
+<!--::: notes-->
+<!--Tom-->
+<!--:::-->
+<!---->
+<!--On distingue donc :-->
+<!---->
+<!--Homomorphisme-->
+<!--:   structurel (préserve les opérations)-->
+<!---->
+<!--Correction-->
+<!--:   fonctionnel (le résultat est bon)-->
+<!---->
+<!--Sécurité-->
+<!--:   l'attaquant n'apprend rien-->
+<!---->
+<!---->
+<!--## Classes de fonctions homomorphes-->
+<!---->
+<!--::: notes-->
+<!--Justin-->
+<!--:::-->
+<!---->
+<!--::: incremental-->
+<!---->
+<!--Deux types de fonctions homomorphes :-->
+<!---->
+<!--- Partielles ($+$ ou $\times$)-->
+<!---->
+<!--  RSA (multiplication) ou Paillier (addition)-->
+<!---->
+<!--- Complètes ($+$ et $\times$)-->
+<!---->
+<!--  Brakerski-Gentry-Vaikuntanathan (BGV)-->
+<!---->
+<!--:::-->
+<!---->
+<!--. . .-->
+<!---->
+<!--```-->
+<!--Cela est valide sur des entiers. Pour des flottants, les fonctions sont nécessairement homomorphiques complètes.-->
+<!--```-->
+<!---->
+<!--## Exemple d'une fonction homomorphe partielle : le chiffrement de Paillier-->
+<!---->
+<!--::: notes-->
+<!--Justin-->
+<!--:::-->
+<!---->
+<!--Schéma homomorphe partiel-->
+<!--:   permet uniquement l’addition sur des données chiffrées.-->
+<!---->
+<!--Basé sur la difficulté du logarithme discret dans les groupes multiplicatifs.-->
+<!---->
+<!--### Génération des clés-->
+<!---->
+<!--::: incremental-->
+<!---->
+<!--1. Choix de deux grands nombres premiers : $p$, $q$-->
+<!---->
+<!--2. Calcul : $n = p \times q$-->
+<!---->
+<!--3. Clé publique : $(n,g)$ avec $g \in Z_{n^{2}}$ et $g=n+1$ en général-->
+<!---->
+<!--4. Clé privée : $\lambda = PPCM(p-1,q-1)$-->
+<!---->
+<!--:::-->
+<!---->
+<!--### Chiffrement d’un message-->
+<!---->
+<!--::: incremental-->
+<!---->
+<!--1. Message $m \in [0,n]$-->
+<!---->
+<!--2. Choix d’un nombre aléatoire $r \in Z_{n}^{*}$-->
+<!---->
+<!--3. Formule de chiffrement :-->
+<!--   $$E(m)=g^{m} \times r^{n} \mod(n^{2})$$-->
+<!---->
+<!--:::-->
+<!---->
+<!--### Propriété homomorphe-->
+<!---->
+<!--::: incremental-->
+<!---->
+<!--- Pour deux messages chiffrés $E(m_{1})$ et $E(m_{2})$ :-->
+<!---->
+<!--  $$E(m_{1}) \times E(m_{2}) = E(m_{1} + m_{2})\mod(n^{2})$$-->
+<!---->
+<!--- Permet de faire une addition dans le domaine chiffré sans accès aux données en clair.-->
+<!---->
+<!--:::-->
+<!---->
+<!--### Déchiffrement-->
+<!---->
+<!--On définit $L(x) = \frac{x - 1}{n}$-->
+<!---->
+<!--Calcul du message déchiffré $m$ : $\left(\frac{c^{\lambda} mod(n^{2}) - 1}{n} \times \frac{1}{L(g^{\lambda} mod (n^{2})) mod(n)}\right) \mod(n)$-->
+<!---->
+<!--# Implémentation de BGV-->
+<!---->
+<!--## Propriétés-->
+<!---->
+<!--Schéma homomorphe complet-->
+<!--:   permet l’addition et la multiplication sur des données chiffrées.-->
+<!---->
+<!--. . .-->
+<!---->
+<!--Basé sur la difficulté du problème LWE, résistant aux attaques quantiques.-->
+<!---->
+<!--. . .-->
+<!---->
+<!--Utilise des polynômes dans des anneaux du type $\mathbb{Z}[X]/(\Phi_m(X))$ où $\Phi_m$ est un polynôme cyclotomique.-->
+<!---->
+<!--## Génération des clés-->
+<!---->
+<!--1. Choix des paramètres :-->
+<!--   - $n$ : degré du polynôme (puissance de 2)-->
+<!--   - $q$ : grand entier premier (modulo)-->
+<!---->
+<!--***-->
+<!---->
+<!--2. Clé privée $s(x)$ : polynôme aléatoire, coefficients dans $\{-1, 0, 1\}$, $deg \leq n$-->
+<!---->
+<!--***-->
+<!---->
+<!--3. Génération de la clé publique :-->
+<!--   - $a(x) \in R_q \text{ aléatoire}$-->
+<!--   - $b(x) = -a(x) \times s(x) + e(x) \mod(q)$, avec $e(x) \text{ petit bruit}$-->
+<!---->
+<!--***-->
+<!---->
+<!--```python-->
+<!--def keygen(q, a, s, e):-->
+<!--   b = mod(-a * s + e, q)-->
+<!--   return (a, b), s-->
+<!--```-->
+<!---->
+<!--## Chiffrement d’un message-->
+<!---->
+<!--::: incremental-->
+<!---->
+<!--1. Encodage du message $m(x)$ : $m'(x) = m(x) \cdot \Delta$ avec $\Delta = \lfloor \frac{q}{t} \rfloor$-->
+<!---->
+<!--2. Choix d’un bruit aléatoire $r(x)$-->
+<!---->
+<!--3. Calcul du chiffré :-->
+<!---->
+<!--   ::: nonincremental-->
+<!---->
+<!--   - $c_0(x) = b(x) \cdot r(x) + m'(x) \mod q$-->
+<!--   - $c_1(x) = a(x) \cdot r(x) \mod q$-->
+<!---->
+<!--   :::-->
+<!---->
+<!--   Le chiffré est la paire $(c_0(x), c_1(x))$-->
+<!---->
+<!--:::-->
+<!---->
+<!--***-->
+<!---->
+<!--```python-->
+<!--def encrypt(m, pk, delta, r, q):-->
+<!--   a, b = pk-->
+<!--   m_enc = encode(m, delta)-->
+<!--   c0 = mod(b * r + m_enc, q)-->
+<!--   c1 = mod(a * r, q)-->
+<!--   return (c0, c1)-->
+<!--```-->
+<!---->
+<!--## Encodage et décodage des messages-->
+<!---->
+<!--::: {.columns}-->
+<!--:::: {.column width="40%"}-->
+<!--```python-->
+<!--def encode(m, delta):-->
+<!--    return m * delta-->
+<!--```-->
+<!--::::-->
+<!--:::: {.column width="60%"}-->
+<!--```python-->
+<!--def decode(m_prime, delta, t):-->
+<!--    return (m_prime // delta) % q-->
+<!--```-->
+<!--::::-->
+<!--:::-->
+<!---->
+<!--## Propriétés homomorphes-->
+<!---->
+<!--### Addition-->
+<!---->
+<!--$$(c_{0},c_{1}) + (c_{0}',c_{1}') = (c_{0} + c_{0}', c_{1} + c_{1}')$$-->
+<!---->
+<!--```python-->
+<!--def add(c1, c2, q):-->
+<!--   c0 = mod(c1[0] + c2[0], q)-->
+<!--   c1_ = mod(c1[1] + c2[1], q)-->
+<!--   return (c0, c1_)-->
+<!--```-->
+<!---->
+<!--### Multiplication simplifiée-->
+<!---->
+<!--Multiplie deux chiffrés → donne un triplet $(c_0, c_1, c_2)$  -->
+<!--Il faut une étape de **relinéarisation** pour revenir à un format à deux composantes.-->
+<!---->
+<!--```python-->
+<!--def mul(c1, c2, s, q):-->
+<!--   c0 = mod(c1[0] * c2[0], q)-->
+<!--   c1_ = mod(c1[0] * c2[1] + c1[1] * c2[0], q)-->
+<!--   c2_ = mod(c1[1] * c2[1], q)-->
+<!--   c0p = mod(c0 + c2_ * s, q)-->
+<!--   c1p = c1_-->
+<!--   return (c0p, c1p)-->
+<!--```-->
+<!---->
+<!--## Déchiffrement-->
+<!---->
+<!--::: incremental-->
+<!---->
+<!--1. Calcul intermédiaire :-->
+<!---->
+<!--   $$m'(x)=c_{0}(x)+c_{1}(x) \times s(x) \mod(q)$$-->
+<!---->
+<!---->
+<!--2. Décodage final :-->
+<!---->
+<!--   ::: nonincremental-->
+<!--   :::: {.columns}-->
+<!---->
+<!--   ::::: {.column width="50%"}-->
+<!--   - Addition-->
+<!---->
+<!--     $$m(x) = \lfloor \frac{m'(x)}{\Delta} \rfloor$$-->
+<!---->
+<!--   :::::-->
+<!---->
+<!--   ::::: {.column width="50%"}-->
+<!--   - Multiplication-->
+<!---->
+<!--     $$m(x) = \lfloor \frac{m'(x)}{\Delta^{2}} \rfloor$$-->
+<!---->
+<!--   :::::-->
+<!--   ::::-->
+<!--   :::-->
+<!---->
+<!--:::-->
+<!---->
+<!--***-->
+<!---->
+<!--```python-->
+<!--def decrypt(ciphertext, s, q, delta, t):-->
+<!--    c0, c1 = ciphertext-->
+<!--    m_prime = mod(c0 + c1 * s, q)-->
+<!--    return decode(m_prime, delta, t)-->
+<!--```-->
+<!---->
+<!--# Reconnaissance d'image à partir de données chiffrées-->
+<!---->
+<!--::: notes-->
+<!--Parler de la reconnaissance d'images-->
+<!--:::-->
+<!---->
+<!--## Fonctionnement global-->
+<!---->
+<!--**BFV :** Proche de BGV-->
+<!---->
+<!--::: incremental-->
+<!---->
+<!--1. Chiffrement vecteurs d'embedding en local-->
+<!--2. Envoi au serveur-->
+<!--3. Recherche homomorphique possible-->
+<!---->
+<!--:::-->
+<!---->
+<!--## Principe-->
+<!---->
+<!--![](../figure2.png)-->
+<!---->
+<!--## Essai en direct-->
+<!---->
+<!--. . .-->
+<!---->
+<!--::: {.columns}-->
+<!--:::: {.column width="25%"}-->
+<!--![](image_claire.jpeg)-->
+<!--::::-->
+<!--:::: {.column width="25%"}-->
+<!--1ac1a3af043d6ee86fd9fb03b934c19c490b9a0b7bd3eea952125cbcd5129296c21c9589c10f0a4f2b143fe5e60c9a8910cb96713e54ed58ef777ee7c41d376c34b4903599a555883362c5b0ba66f4dc2fc37f9e0b650def39c211cbea3f5f20241997101aba3dab16f25f73eeb428dcf3205f360427521b068f20ce89a4475715fe1c0d3794ee9522c5a77e6a34c8e14c9279b23838120b873078e42de61e292bc91d4edaf04e462eb1a7dee8dd5a2c9ed15b6d1ba8760c87f0a29afe94b8db9fe4d1fba3659a17c73a143f74315edae72885296d7c58aeef438225dc3b777c7fac3ad9456f3c04b839a4ec752c86096e8b35417285df1ef8065686f0663478a921be1e1f759de85f4e747b3530e17d262600e2871de8cc4ba5ec3d839073026cc925055b4f71a0af32fa729f7f64abce73abfa276ac99094149279dcfabcdfba2b9087c97adefbfecc897842912f2dae712fdb2f84b24c357fab664017943258ec45db03768670705a10e1b0137b3327d8a13616347793aa3c6d9d77c598c48567dbf3552f695e3c86bb67e86ea7e68d4be7115ec7b57416c8f696cfa2dea689dc3449a276417e23454b9d51352fe5ac0fe17827676f3e1ba95d4e2a8288928e5c580616b15b41536cbf78a35703a91672e740ddb38494026891179a09c786690d1b5ee78836cdd0f72c5ead834819fbabe1c0-->
+<!--::::-->
+<!--:::: {.column width="25%"}-->
+<!--![](image_crypte.jpeg)-->
+<!--::::-->
+<!--:::: {.column width="25%"}-->
+<!--![](image_contours.jpeg)-->
+<!--::::-->
+<!--:::-->
+<!---->
+<!--# Merci de votre attention !-->
+</section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js/dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="https://unpkg.com/reveal.js/plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js/plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js/plugin/zoom/zoom.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: true,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // reveal.js plugins
+        plugins: [
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>

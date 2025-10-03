@@ -468,6 +468,6 @@ On obtient comme résultat :
 
 `1????00103910000001029042=4082657793979904;00000000>26420;420940800000089<08111?800 000000000`
 
-On remarque que le seul nombre qui est bien balisé (respecte le format de la track 2) et qui contient le nombre exact de chiffres d'une carte bancaire est 4082 6577 9397 9904 (situé entre un « = » et un « ; » et constitué de 16 chiffres). Or en utilisant le site credit-card validator, on se rend compte que cette carte n'existe pas. On applique donc des méthodes de stéganographie à notre chaine de numéros pour retrouver le bon numéro. En inversant chaque bloc de 4 chiffres, puis en inversant l'ordre des blocs, on obtient ce numéro : 4099 7939 7756 2804. Désormais, on peut lire les renseignements de la carte sur credit-card validator :
+On remarque que le seul nombre qui est bien balisé (respecte le format de la track 2) et qui contient le nombre exact de chiffres d'une carte bancaire est 4082 6577 9397 9904 (situé entre un « = » et un « ; » et constitué de 16 chiffres). Or en utilisant le site [credit-card validator](https://dnschecker.org/credit-card-validator.php), on se rend compte que cette carte n'existe pas. On retourne notre chaîne de numéros pour retrouver le bon numéro, ce qui est souvent le cas pour les appareils de skimming. En inversant, on obtient ce numéro : 4099 7939 7756 2804. Désormais, on peut lire les renseignements de la carte sur [credit-card validator](https://dnschecker.org/credit-card-validator.php) :
 
 ![Credit Card validator](figures/skimming/credit-card-validator.jpeg)

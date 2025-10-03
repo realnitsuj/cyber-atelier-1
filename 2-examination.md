@@ -302,20 +302,47 @@ Voici une partie de ces messages considérés comme les plus importants pour not
 
 #### 8 avril 2021
 
-Heil Hydra \emoji{octopus}!
-:   `6cKEMFlNU3NPs/bxhxPKQRyDXUrQK7a8tHtX5xBXdYQ=`
-
+Werner :
+:   Heil Hydra \emoji{octopus}!
+:   6cKEMFlNU3NPs/bxhxPKQRyDXUrQK7a8tHtX5xBXdYQ=
 
 #### 15 avril 2021
 
-We need to meet you. Get to geneva asap, further instructions will follow.
-:   `HHYbm0j yH9MsbIM1DsyvNU9iDm63RQa9/1Fxfrs/A75m3wAM04VwDGphJ4m9IUTjPQ//3qbJmQk xQQeu 50WmK0zLHj93BiByuFEHsvHwzcfHsI`
+Entrant :
+:   We need to meet you. Get to geneva asap, further instructions will follow.
+:   HHYbm0jyH9MsbIM1DsyvNU9iDm63RQa9/1Fxfrs/A75m3wAM04VwDGphJ4m9IUTjPQ//3qbJmQkxQ Qeu50WmK0zLHj93BiByuFEHsvHwzcfHsI
 
-understood, was headed to geneva anyway, already on a train.
-:   `S6+p9IajgCnkXIm0tou uBzw/c5dSk4ZVzCEeA7BZmnR7+J5ybgmhLeXCyxpwovM8yFaK1NQtfAJXHKwHnMGIxg==`
+Werner :
+:   understood, was headed to geneva anyway, already on a train.
+:   S6+p9IajgCnkXIm0tou uBzw/c5dSk4ZVzCEeA7BZmnR7+J5ybgmhLeXCyxpwovM8yFaK1NQtfAJXHKwHnMGIxg==
 
-Good. Meet us at our base. Below the Turkish consulate. Delete this message once read!
-:   `HHYcdZD5nSpEbiNiPHaMn/eJR3qfnG1bBjxHLgN2Q91Jjx+DaAtq15BuatyPqSSH0ZOqLPbis2 11525r4RIkumQSF1p8xjb7tbOHzWN250Sqmoh9v+9kcE6lnWMOcYHo4ub`
+Entrant :
+:   Good. Meet us at our base. Below the Turkish consulate. Delete this message once read!
+:   HHYcdZD5nSpEbiNiPHaMn/eJR3qfnG1bBjxHLgN2Q91Jjx+DaAtq15BuatyPqSSH0ZOqLPbis2 11525r4RIkumQSF1p8xjb7tbOHzWN250Sqmoh9v+9kcE6lnWMOcYHo4ub
+
+Werner :
+:   Installed device at airport as discussed
+:   HHY6JGyTGtl0IjI8PgtU2T/w5YPNCw1PhZ/Lagr4MhnCQhX+q36vX3TeUBZ6r/odTJU
+
+#### 18 avril 2021
+
+Entrant:
+:   We sent you the payment to the address you provided us. confirm reception.
+:   HHYqDAJ2HSbMahjfWcjFcL8H41ALcW17JkzdXUV02H4eHGTt+6mU+twizvAsvdMU6FkIUHhrPcLzbiBsCV99j/skylD1A6fR7cocoqjOb61DM8=
+
+[^postomat]: Nom des distributeurs de billets en Suisse
+
+Entrant :
+:   Btw Lay low, it seems your little fuckup with the Postomat[^postomat] had big consequences.
+:   HHY97NA5dDGdqomydjZt0GGycKgRS2T2vltp40yuOAo9azlfHzaNR3r2Fw78GXBuVC4YIifClzf+VKxxK13O2MgHwKDeGxIGva+uFj7wL+YnpKhdeGdwLiZ2/wszZN9dKlx
+
+
+Werner :
+:   will do. and again my apologies, will never happen again, i've installed the others much more carefully.
+:   HHYgSQ2GGQd5ZEvKdOk5qRrWfoEH0baqjRkTwacpwgxp02qqrNOueQ0z31KEiL65EZCnHrjYy+7qbqFiVcCJCBnXnQdMC1MI64+dyXkuK6e/9I/ebQM3ZaAhqNLbIHNPOkTv35Hz1VseDqLE1YpOPI4YQ==
+
+
+
 
 
 ## Skimming
@@ -368,13 +395,12 @@ Tout d'abord, les cartes magnétiques sont composées de 3 pistes sur leur bande
 
  : Présentation des trois tracks
 
-Le tableau ci-dessous présente les trois pistes (tracks) des cartes magnétiques et leurs caractéristiques d'encodage, en précisant le type d'informations stockées et leur capacité.
+Le tableau ci-dessus présente les trois pistes (tracks) des cartes magnétiques et leurs caractéristiques d'encodage, en précisant le type d'informations stockées et leur capacité.
 
 La track 2, utilisée principalement pour les cartes bancaires, stocke les informations essentielles aux transactions, telles que le numéro de compte, la date d'expiration et d'autres données nécessaires à l'authentification et au traitement sécurisé des paiements.
 
 Quand on passe la carte dans un lecteur, celui-ci détecte les variations de polarisation de la bande magnétique et les traduit en informations numériques, ce qui permet d'identifier la carte et d'accéder aux données stockées. À l'intérieur du lecteur, une véritable chaîne de traitement prend en charge ce processus : une bobine capte les changements de polarité et un microcontrôleur analyse ces signaux pour reconstruire les données codées sur la carte, comme illustré sur le schéma \ref{fig:fonc}.
 
-\newpage
 
 \begin{figure}[h!]
 \centering

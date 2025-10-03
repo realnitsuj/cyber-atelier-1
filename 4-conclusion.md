@@ -6,7 +6,7 @@ Suite à l'analyse forensique du Samsung Galaxy S10 saisi sur Werner von Strucke
 
 ### Appartenance à l'organisation HYDRA{-}
 
-- **Identité confirmée** : Werner von Strucker, personnage fictif lié à l'univers Marvel/[HYDRA][]
+- **Identité confirmée** : [Werner von Strucker](https://en.wikipedia.org/wiki/Werner_von_Strucker), personnage fictif lié à l'univers Marvel/[HYDRA][]
 - **Contacts criminels** : Correspondance avec `therealredskull41@gmail.com` (Red Skull)
 - **Preuves visuelles** : Photo du logo [HYDRA][] prise à l'Université de Lausanne le 8 avril 2021
 - **Communications chiffrées** : Messages décodés via OmniNotes révélant *Heil Hydra \emoji{octopus}!*

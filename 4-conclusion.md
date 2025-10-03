@@ -66,3 +66,12 @@ Ce projet nous a permis de maîtriser :
 - **Corrélation** : Mise en relation de preuves dispersées (photos, messages, blockchain, géolocalisation)
 
 Cette investigation démontre l'efficacité des techniques de mobile forensics pour reconstituer des activités criminelles complexes, même face à des tentatives de dissimulation par chiffrement.
+
+
+
+
+# Sources{-}
+
+- How Magnetic Stripe Readers Work - <https://www.youtube.com/watch?v=71_8NHHD8OI>
+- Skimming - <https://www.fbi.gov/how-we-can-help-you/scams-and-safety/common-frauds-and-scams/skimming>
+- Magstripe Decoder `README` - <https://github.com/jtarrio/MagstripeDecoder>

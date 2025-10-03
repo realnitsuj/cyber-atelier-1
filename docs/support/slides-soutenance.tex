@@ -1,0 +1,386 @@
+\documentclass{beamer}
+\usetheme{Madrid}
+\usecolortheme{default}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{fontawesome}
+
+% Custom colors
+\definecolor{hydroblue}{RGB}{0,102,204}
+\definecolor{crimsonred}{RGB}{220,20,60}
+\definecolor{forensicgreen}{RGB}{34,139,34}
+
+\title[Mobile Forensics]{Analyse Forensique Samsung Galaxy S10}
+\subtitle{DFRWS Challenge 2021 - Étape 3}
+\author{Justin Bossard \and Mattéo Gouhier \and Paul Mathé \and Samuel Plet}
+\institute{UQAC - Atelier Pratique en Cybersécurité}
+\date{Octobre 2025}
+
+\begin{document}
+
+% ============= SLIDE 1: TITRE =============
+\begin{frame}
+\titlepage
+\end{frame}
+
+% ============= ACTE 1: L'ENQUÊTE COMMENCE (5 min) =============
+% Justin (1.5 min) → Samuel (2 min) → Paul (1.5 min)
+
+% SLIDE 2: Contexte mystérieux (Justin - 1.5 min)
+\begin{frame}{\faSearch \, Le Mystère de Lausanne}
+\begin{center}
+\Large{\textcolor{crimsonred}{Lausanne, 9 avril 2021}}
+\end{center}
+
+\begin{block}{Un crime découvert}
+\begin{itemize}
+    \item \faMapMarker \, ATM compromis - Dispositif de skimming trouvé
+    \item \faCalendar \, 11 jours plus tard : Arrestation mystérieuse à Genève
+    \item \faQuestion \, \textbf{Qui est le suspect ?}
+\end{itemize}
+\end{block}
+
+\begin{alertblock}{Notre Mission}
+\textbf{DFRWS Challenge 2021} : Analyser un Samsung Galaxy S10 pour élucider l'affaire
+\end{alertblock}
+
+\pause
+\begin{center}
+\Large{\textcolor{hydroblue}{Samuel va nous révéler qui se cache derrière ce crime...}}
+\end{center}
+\end{frame}
+
+% SLIDE 3: Révélation identité (Samuel - 2 min)
+\begin{frame}{\faUser \, Révélation de l'Identité}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\begin{block}{Autopsy révèle...}
+\begin{itemize}
+    \item \faInstagram \, Profil Instagram découvert
+    \item \faUser \, \textbf{Werner von Strucker}
+    \item \faAt \, \texttt{therealredskull41@gmail.com}
+\end{itemize}
+\end{block}
+
+\begin{alertblock}{Corrélation}
+Photos Instagram $\leftrightarrow$ Photos téléphone
+\end{alertblock}
+\end{column}
+
+\begin{column}{0.5\textwidth}
+\begin{center}
+% Placeholder pour photo du suspect
+\fbox{\begin{minipage}{3cm}
+\centering
+\textcolor{gray}{Photo\\Werner\\von Strucker}
+\end{minipage}}
+\end{center}
+\end{column}
+\end{columns}
+
+\pause
+\begin{center}
+\Large{\textcolor{crimsonred}{HYDRA... Paul, ce nom te dit quelque chose ?}}
+\end{center}
+\end{frame}
+
+% SLIDE 4: Lien HYDRA (Paul - 1.5 min)
+\begin{frame}{\faExclamationTriangle \, Le Lien HYDRA}
+\begin{block}{Paul confirme}
+\begin{itemize}
+    \item \faExclamationTriangle \, \textbf{HYDRA} : Organisation criminelle (Marvel)
+    \item \faWarning \, "Red Skull" dans l'email
+    \item \faShield \, Mais ici, ce n'est pas de la fiction...
+\end{itemize}
+\end{block}
+
+\begin{center}
+\tikz{
+    \node[circle, fill=crimsonred, text=white, font=\Large] {H};
+    \node[right=0.1cm, circle, fill=crimsonred, text=white, font=\Large] {Y};
+    \node[right=0.2cm, circle, fill=crimsonred, text=white, font=\Large] {D};
+    \node[right=0.3cm, circle, fill=crimsonred, text=white, font=\Large] {R};
+    \node[right=0.4cm, circle, fill=crimsonred, text=white, font=\Large] {A};
+}
+\end{center}
+
+\pause
+\begin{center}
+\Large{\textcolor{hydroblue}{Mattéo, que nous révèlent ses déplacements ?}}
+\end{center}
+\end{frame}
+
+% ============= ACTE 2: LA TRAQUE (7 min) =============
+% Samuel (2.5 min) → Mattéo (2.5 min) → Mattéo suite (1.5 min) → Paul (0.5 min)
+
+% SLIDE 5: Géolocalisation (Samuel - 2.5 min)
+\begin{frame}{\faMapO \, La Traque Géographique}
+\begin{columns}
+\begin{column}{0.6\textwidth}
+\begin{block}{16 Photos Géolocalisées}
+\begin{itemize}
+    \item \faMapMarker \, Région lausannoise
+    \item \faHome \, Cache Google Maps :
+    \begin{itemize}
+        \item Bussigny
+        \item Prilly  
+        \item Renens
+    \end{itemize}
+    \item \faTrain \, 15 avril : Voyage à Genève
+\end{itemize}
+\end{block}
+\end{column}
+
+\begin{column}{0.4\textwidth}
+\begin{center}
+% Placeholder pour carte
+\fbox{\begin{minipage}{3cm}
+\centering
+\textcolor{gray}{Carte\\Suisse\\Déplacements}
+\end{minipage}}
+\end{center}
+\end{column}
+\end{columns}
+
+\pause
+\begin{alertblock}{Voyage Suspect}
+\faCalendar \, 15 avril : Gare → ICC Genève
+\end{alertblock}
+
+\pause
+\begin{center}
+\Large{\textcolor{crimsonred}{Mattéo a découvert des messages secrets...}}
+\end{center}
+\end{frame}
+
+% SLIDE 6: Messages secrets (Mattéo - 2 min)
+\begin{frame}{\faLock \, Messages Cryptés Découverts}
+\begin{block}{OmniNotes Suspect}
+\begin{itemize}
+    \item \faFileTextO \, Application de notes avec contenu chiffré
+    \item \faKey \, Préfixe mystérieux récurrent : \textcolor{crimsonred}{\texttt{"HHY"}}
+    \item \faCogs \, Nécessité de reverse engineering
+\end{itemize}
+\end{block}
+
+\begin{center}
+\fbox{\begin{minipage}{8cm}
+\ttfamily\small
+HHYiVGhhdCBpcyBub3QgZGVhZCB3aGljaCBjYW4gZXRlcm5hbA==\\
+HHYQWxsIGhhaWwgdGhlIG1pZ2h0eSBIeWRyYSEgUmVkIFNrdWxs\\
+HHYMeXN0ZXJpb3VzIG1lc3NhZ2UgZnJvbSB0aGUgZGFyayBzaWRl
+\end{minipage}}
+\end{center}
+
+\pause
+\begin{center}
+\Large{\textcolor{hydroblue}{Devinez ce que signifie HHY ?}}
+\end{center}
+\end{frame}
+
+% SLIDE 7: Déchiffrement (Mattéo suite - 1.5 min)
+\begin{frame}{\faUnlock \, Algorithme Révélé}
+\begin{block}{Reverse Engineering Réussi}
+\begin{itemize}
+    \item \faCog \, \textbf{AES/ECB} + Base64 + préfixe "HHY"
+    \item \faKey \, Clé hybride découverte : \texttt{rb5CuefkDLyb9T} + date
+    \item \faCalendar \, Format date : YYYY-MM-DD
+    \item \faUnlock \, \textbf{42 messages décodés}
+\end{itemize}
+\end{block}
+
+\pause
+\begin{alertblock}{Révélation Choc}
+\centering
+\Large{\textcolor{crimsonred}{"Heil Hydra [HYDRA]!"}}
+\end{alertblock}
+
+\pause
+\begin{center}
+\Large{\textcolor{forensicgreen}{Et le 15 avril ? Paul peut nous aider...}}
+\end{center}
+\end{frame}
+
+% SLIDE 8: Corrélation (Samuel - 1 min)
+\begin{frame}{\faBullseye \, Corrélation Parfaite}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\begin{block}{Message du 15 avril}
+\textcolor{crimsonred}{\texttt{"below Turkish consulate"}}
+\end{block}
+
+\begin{block}{Photos Genève}
+\begin{itemize}
+    \item \faCamera \, ICC (International Conference Center)
+    \item \faFlag \, Consulat turc visible
+    \item \faMapMarker \, Géolocalisation exacte
+\end{itemize}
+\end{block}
+\end{column}
+
+\begin{column}{0.5\textwidth}
+\begin{center}
+% Placeholder pour photos corrélation
+\fbox{\begin{minipage}{3.5cm}
+\centering
+\textcolor{gray}{Photos\\ICC \& Consulat\\Corrélation}
+\end{minipage}}
+\end{center}
+\end{column}
+\end{columns}
+
+\pause
+\begin{center}
+\Large{\textcolor{hydroblue}{Justin, parlons méthodologie !}}
+\end{center}
+\end{frame}
+
+% ============= ACTE 3: LES PREUVES S'ACCUMULENT (5 min) =============
+% Justin (1.5 min) → Paul (2 min) → Paul suite (1.5 min)
+
+% SLIDE 9: Principe de Locard (Justin - 1.5 min)
+\begin{frame}{\faBalanceScale \, Principe de Locard}
+\begin{block}{Méthodologie Forensique}
+\textcolor{forensicgreen}{\Large{"Chaque interaction laisse une trace"}}
+\end{block}
+
+\begin{itemize}
+    \item \faCheckSquareO \, \textbf{5 phases appliquées} : Identification → Collection → Examination → Analysis → Presentation
+    \item \faShield \, \textbf{Intégrité préservée} : Vérification SHA2-256
+    \item \faGavel \, \textbf{Recevabilité juridique} garantie
+\end{itemize}
+
+\pause
+\begin{center}
+\Large{\textcolor{crimsonred}{Paul, quelles autres traces avons-nous ?}}
+\end{center}
+\end{frame}
+
+% SLIDE 10: Piste financière (Paul - 2 min)
+\begin{frame}{\faDollar \, L'Argent du Crime}
+\begin{block}{Bitcoin Cash Découvert}
+\begin{itemize}
+    \item \faBitcoin \, Adresse principale : \texttt{qpuv-d23y}
+    \item \faRandom \, Réseau d'obfuscation complexe
+    \item \faCalendar \, \textbf{18 avril 2021} : Toutes les transactions
+    \item \faDollar \, Montants faibles (\~4-5\$) pour masquer l'origine
+\end{itemize}
+\end{block}
+
+\begin{center}
+% Placeholder pour schéma blockchain
+\fbox{\begin{minipage}{6cm}
+\centering
+\textcolor{gray}{Schéma\\Réseau Bitcoin\\Obfuscation}
+\end{minipage}}
+\end{center}
+
+\pause
+\begin{center}
+\Large{\textcolor{hydroblue}{Mais l'acte criminel lui-même ?}}
+\end{center}
+\end{frame}
+
+% SLIDE 11: Skimming prouvé (Paul - 1.5 min)
+\begin{frame}{\faVolumeUp \, L'Audio qui Condamne}
+\begin{block}{Enregistrement Suspect}
+\begin{itemize}
+    \item \faVolumeUp \, \texttt{2021\_04\_09T1621} : Audio mystérieux
+    \item \faCalendar \, 9 avril 2021 : Corrélation temporelle parfaite
+    \item \faCreditCard \, Dispositif "audioskim" physique retrouvé
+\end{itemize}
+\end{block}
+
+\begin{alertblock}{Preuve Physique}
+\faMapMarker \, ATM Lausanne + Dispositif = Crime prouvé
+\end{alertblock}
+
+\pause
+\begin{center}
+\Large{\textcolor{crimsonred}{Timeline finale à 4 voix !}}
+\end{center}
+\end{frame}
+
+% ============= FINAL: TIMELINE COLLABORATIVE (3 min) =============
+% Paul introduit → Tous ensemble → Justin clôture
+
+% SLIDE 12: Timeline collaborative
+\begin{frame}{\faCalendar \, Reconstitution Collaborative}
+\begin{center}
+\textbf{\Large{Timeline du Crime}}
+\end{center}
+
+\begin{itemize}
+    \item[\faUser] \textbf{Justin} : \textcolor{hydroblue}{8 avril : Recrutement HYDRA}
+    \item[\faVolumeUp] \textbf{Samuel} : \textcolor{forensicgreen}{9 avril : Skimming à Lausanne}  
+    \item[\faMapMarker] \textbf{Mattéo} : \textcolor{orange}{15 avril : Rendez-vous secret Genève}
+    \item[\faBitcoin] \textbf{Paul} : \textcolor{crimsonred}{18 avril : Blanchiment Bitcoin Cash}
+\end{itemize}
+
+\pause
+\begin{center}
+\Large{\textcolor{crimsonred}{\textbf{20 avril : Arrestation - FIN DE PARTIE !}}}
+\end{center}
+
+\pause
+\begin{block}{Conclusion Forensique}
+\textbf{Chaîne de preuves complète} → Intégrité préservée → \textcolor{forensicgreen}{Recevabilité juridique}
+\end{block}
+\end{frame}
+
+% SLIDE 13: Questions
+\begin{frame}{\faQuestion \, Questions \& Discussion}
+\begin{center}
+\Large{\textbf{Questions ?}}
+\end{center}
+
+\begin{block}{Expertise par domaine}
+\begin{itemize}
+    \item \textcolor{hydroblue}{\textbf{Justin}} : Méthodologie forensique, aspects juridiques
+    \item \textcolor{forensicgreen}{\textbf{Samuel}} : OSINT, blockchain, géolocalisation  
+    \item \textcolor{orange}{\textbf{Mattéo}} : Cryptographie, reverse engineering
+    \item \textcolor{crimsonred}{\textbf{Paul}} : Audio forensics, skimming techniques
+\end{itemize}
+\end{block}
+
+\vfill
+\begin{center}
+\textit{Merci pour votre attention !}
+\end{center}
+\end{frame}
+
+% SLIDES DE BACKUP (si temps/questions)
+% Note: Format dynamique avec interventions croisées selon la répartition
+\begin{frame}{Backup: Détails Techniques AES}
+\begin{block}{Algorithme de Chiffrement}
+\begin{itemize}
+    \item \textbf{Mode} : AES-128-ECB (Electronic Codebook)
+    \item \textbf{Encodage} : Base64 après chiffrement
+    \item \textbf{Clé dynamique} : \texttt{rb5CuefkDLyb9T} + date du message
+    \item \textbf{Préfixe} : "HHY" ajouté avant encodage Base64
+\end{itemize}
+\end{block}
+
+\begin{center}
+\ttfamily\small
+\fbox{\begin{minipage}{8cm}
+plaintext → AES-ECB(key+date) → Base64 → "HHY"+encoded
+\end{minipage}}
+\end{center}
+\end{frame}
+
+\begin{frame}{Backup: Réseau Bitcoin Cash}
+\begin{center}
+% Placeholder pour diagramme détaillé
+\fbox{\begin{minipage}{10cm}
+\centering
+\textcolor{gray}{Diagramme détaillé\\Réseau d'obfuscation\\Bitcoin Cash}
+\end{minipage}}
+\end{center}
+\end{frame}
+
+\end{document}

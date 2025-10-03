@@ -1,0 +1,161 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+
+\geometry{margin=2cm}
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Soutenance Mobile Forensics}
+\lfoot{UQAC - Atelier Cyber Sécurité}
+\rfoot{\thepage}
+
+\title{\textbf{Répartition des Tâches et Rôles} \\ 
+       \large Soutenance Analyse Forensique Samsung Galaxy S10}
+\author{Justin Bossard, Mattéo Gouhier, Paul Mathé, Samuel Plet}
+\date{Octobre 2025}
+
+\begin{document}
+
+\maketitle
+
+\section{Contexte du Projet}
+
+Dans le cadre du \textbf{DFRWS Challenge 2021}, notre équipe de 4 personnes a réalisé une analyse forensique complète d'un Samsung Galaxy S10. Cette soutenance de 20 minutes présente nos résultats selon un format dynamique et interactif.
+
+\section{Répartition Réelle des Tâches de Recherche}
+
+\subsection{Justin Bossard - \textcolor{blue}{Chef de Projet \& Méthodologie}}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Coordination générale} : Mise en forme du rapport final
+    \item \textbf{Méthodologie forensique} : Application des 5 phases (Identification → Collection → Examination → Analysis → Presentation)
+    \item \textbf{Collaboration avec Samuel} : 
+    \begin{itemize}
+        \item Identification du suspect (Werner von Strucker)
+        \item Analyse de géolocalisation (16 photos en Suisse)
+    \end{itemize}
+    \item Investigation du portefeuille Bitcoin Cash
+    \item \textbf{Intégrité des données} : Vérification SHA2-256
+    \item \textbf{Synthèse juridique} : Recevabilité des preuves
+\end{itemize}
+
+\subsection{Mattéo Gouhier - \textcolor{orange}{Cryptanalyse \& Messages}}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Reverse engineering} : Décompilation APK OmniNotes
+    \item \textbf{Cryptanalyse} :
+    \begin{itemize}
+        \item Identification algorithme AES/ECB + Base64
+        \item Découverte préfixe "HHY" (Heil Hydra)
+        \item Clé hybride : \texttt{rb5CuefkDLyb9T} + date (YYYY-MM-DD)
+    \end{itemize}
+    \item \textbf{Déchiffrement messages} :
+    \begin{itemize}
+        \item 42 messages décodés au total
+        \item Messages clés : recrutement (8 avril), rendez-vous (15 avril)
+        \item Corrélation "below Turkish consulate" $\leftrightarrow$ photos ICC Genève
+    \end{itemize}
+    \item \textbf{Développement d'outils} : Scripts de déchiffrement automatique
+\end{itemize}
+
+\subsection{Paul Mathé - \textcolor{red}{Audio Forensics \& Skimming}}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Analyse audio} :
+    \begin{itemize}
+        \item Enregistrement suspect : \texttt{2021\_04\_09T1621}
+        \item Corrélation temporelle avec date de skimming
+        \item Analyse spectrale et patterns audio
+    \end{itemize}
+    \item \textbf{Investigation skimming} :
+    \begin{itemize}
+        \item Identification dispositif "audioskim"
+        \item Corrélation avec ATM Lausanne (9 avril)
+        \item Preuves physiques du crime
+    \end{itemize}
+    \item \textbf{Expertise technique} : Compréhension mécanismes de skimming
+    \item \textbf{Timeline criminelle} : Reconstitution séquence d'événements
+\end{itemize}
+
+\subsection{Samuel Plet - \textcolor{green}{OSINT}}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Identification du suspect} :
+    \begin{itemize}
+        \item Corrélation profil Instagram $\leftrightarrow$ photos téléphone
+        \item Email suspect : \texttt{therealredskull41@gmail.com}
+        \item Lien avec l'univers Marvel/HYDRA
+    \end{itemize}
+    \item \textbf{Géolocalisation avancée} :
+    \begin{itemize}
+        \item Analyse des métadonnées EXIF
+        \item Cache Google Maps (Bussigny, Prilly, Renens)
+        \item Reconstitution du voyage Genève (15 avril)
+    \end{itemize}
+\end{itemize}
+
+\section{Répartition pour la Soutenance (Format Dynamique)}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|p{3cm}|p{5cm}|p{4cm}|}
+\hline
+\textbf{Acte} & \textbf{Durée} & \textbf{Intervenants} & \textbf{Contenu Principal} \\
+\hline
+\textbf{Acte 1} & 5 min & \textcolor{blue}{Justin} + \textcolor{green}{Samuel} + \textcolor{red}{Paul} & Contexte + Identité + Lien HYDRA \\
+\hline
+\textbf{Acte 2} & 7 min & \textcolor{green}{Samuel} + \textcolor{orange}{Mattéo} + \textcolor{red}{Paul} & Géolocalisation + Cryptanalyse + Corrélations \\
+\hline
+\textbf{Acte 3} & 5 min & \textcolor{blue}{Justin} + \textcolor{red}{Paul} + \textcolor{orange}{Mattéo} & Méthodologie + Audio + Skimming \\
+\hline
+\textbf{Final} & 3 min & \textcolor{red}{Paul} + \textbf{Tous} & Timeline collaborative + Conclusion \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Fil Conducteur Dynamique de la Soutenance}
+
+\subsection{ACTE 1 : L'ENQuÊTE COMMENCE (5 min)}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{\textcolor{blue}{Justin} ouvre (1.5 min)} : Contexte DFRWS, skimming Lausanne → arrestation Genève
+    \item \textbf{\textcolor{green}{Samuel} révèle (2 min)} : Identité Werner von Strucker via Autopsy/Instagram
+    \item \textbf{\textcolor{red}{Paul} confirme (1.5 min)} : Lien HYDRA, organisation criminelle
+    \item \textbf{Transition Samuel} : \textit{"Mattéo, que nous révèlent ses déplacements ?"}
+\end{itemize}
+
+\subsection{ACTE 2 : LA TRAQUE (7 min)}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{\textcolor{orange}{Mattéo} démarre (2.5 min)} : Géolocalisation, cache Google Maps, voyage Genève
+    \item \textbf{\textcolor{orange}{Mattéo} révèle (2.5 min)} : Messages chiffrés OmniNotes, préfixe HHY
+    \item \textbf{\textcolor{orange}{Mattéo} décode (1.5 min)} : Algorithme AES/ECB, "Heil Hydra", rendez-vous
+    \item \textbf{\textcolor{red}{Paul} corrèle (0.5 min)} : "below Turkish consulate" $\leftrightarrow$ photos ICC
+    \item \textbf{Transition Paul} : \textit{"Justin, parlons méthodologie !"}
+\end{itemize}
+
+\subsection{ACTE 3 : LES PREUVES S'ACCUMULENT (5 min)}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{\textcolor{blue}{Justin} cadre (1.5 min)} : Principe de Locard, intégrité SHA2-256
+    \item \textbf{\textcolor{red}{Paul} dévoile (2 min)} : Bitcoin Cash, réseau d'obfuscation 18 avril
+    \item \textbf{\textcolor{red}{Paul} prouve (1.5 min)} : Audio 9 avril, dispositif audioskim ATM
+    \item \textbf{Transition Paul} : \textit{"Timeline finale à 4 voix !"}
+\end{itemize}
+
+\subsection{FINAL : TIMELINE COLLABORATIVE (3 min)}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{\textcolor{blue}{Justin}} : \textit{"8 avril : Recrutement HYDRA"}
+    \item \textbf{\textcolor{green}{Samuel}} : \textit{"9 avril : Skimming à Lausanne"}
+    \item \textbf{\textcolor{orange}{Mattéo}} : \textit{"15 avril : Rendez-vous secret Genève"}
+    \item \textbf{\textcolor{red}{Paul}} : \textit{"18 avril : Blanchiment Bitcoin Cash"}
+    \item \textbf{Tous ensemble} : \textit{"20 avril : Arrestation - FIN DE PARTIE !"}
+    \item \textbf{\textcolor{blue}{Justin} clôture} : Chaîne de preuves, recevabilité juridique
+\end{itemize}
+
+\vfill
+\centering
+\textit{Ce document sert de fil conducteur pour la soutenance dynamique de 20 minutes (prises de parole entremêlées).}
+
+\end{document}

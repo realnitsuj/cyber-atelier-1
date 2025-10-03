@@ -246,7 +246,7 @@ private String get_data() throws IOException, JSONException {
 }
 ```
 
-Avec des bouts de code codés en `base64` et compressé en [zlib](https://www.zlib.net/), identifiable grâce au préfixe `eJw` :
+Avec des bouts de code codés en `base64` et compressé en [zlib](https://www.zlib.net/) :
 
 - `eJwNyUsKwDAIBNATZSTbHietkH5wShUkt7frNyNe30Tm6hgPB3Z+ijztYDpM45eW3rrcunA5rQ DMDhIV` nous donne le lien vers un site nous permettant de récupérer une clé : `rb5CuefkDLyb9T`
 - `eJwNwIEAAAAMhECiULJ4idm3u4eyBRWSA6E` nous donne `yyyy-MM-dd`.
